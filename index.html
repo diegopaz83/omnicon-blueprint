@@ -1437,6 +1437,14 @@ table.xt tr.addrow .cin{outline:1px dashed var(--muted)}
 .ioe-g{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px}
 .ioe-g .inp{min-height:42px}
 @media (max-width:700px){.ioe-g{grid-template-columns:1fr}}
+button.cgrp2{width:calc(100% - 20px);text-align:left;cursor:pointer;gap:8px;justify-content:flex-start}
+button.cgrp2:hover{background:#0a2f5c}
+button.cgrp2 .gt{flex:1}
+button.cgrp2 em{font-style:normal;font-size:10.5px;font-weight:500;letter-spacing:0;text-transform:none;color:#f5c85a}
+.cgrp2 .chv{display:inline-flex;transition:transform .15s}
+.cgrp2 .chv .ic{width:14px;height:14px}
+.cgrp2[aria-expanded="false"] .chv{transform:rotate(0deg)}
+.cgrp2[aria-expanded="true"] .chv{transform:rotate(90deg)}
 </style>
 </head>
 <body>
@@ -3433,7 +3441,9 @@ var BP = (function () {
     var groups = [['L4', 'Nivel 4 · Business planning'], ['L3', 'Nivel 3 · Manufacturing operations'], ['L12', 'Niveles 1 y 2 · Control']];
     return '<aside class="clist" aria-label="Actividades"><div class="chead"><input class="inp" data-cq="1" placeholder="Buscar actividad, rol o documento" value="' + esc(C.q) + '"><div class="row" style="gap:6px">' + [['all', 'Todas · ' + all.length], ['inc', 'Incompletas · ' + inc], ['sug', 'Con sugerencias · ' + all.filter(function (a) { return sugFor(a.id).length; }).length]].map(function (x) { return '<button class="h-chip" data-a="cF" data-v="' + x[0] + '" aria-pressed="' + (C.f === x[0]) + '">' + x[1] + '</button>'; }).join('') +
       '<select class="inp" data-crole="1" style="width:auto;min-height:30px;font-size:12px;padding:3px 8px"><option value="">Todos los roles</option>' + S().cat.roles.map(function (r) { return '<option' + (C.role === r ? ' selected' : '') + '>' + esc(r) + '</option>'; }).join('') + '</select></div>' + (noT ? '<p class="sm mut" style="margin:0">' + noT + ' de ' + all.length + ' actividades no tienen <b>tiempo</b>: sin él no se calcula el beneficio.</p>' : '') + '</div><div class="cscroll">' +
-      groups.map(function (g) { var G = L.filter(function (a) { return a.isa === g[0]; }); return G.length ? '<div class="cgrp2"><span>' + g[1] + '</span><b>' + G.length + '</b></div>' + G.map(listRow).join('') : ''; }).join('') + (L.length ? '' : '<p class="sm mut" style="padding:16px">' + (all.length ? 'Ninguna actividad con este filtro.' : 'Este proceso aún no tiene actividades. Escribe la primera abajo o usa Captura rápida.') + '</p>') + '</div>' +
+      groups.map(function (g) { var G = L.filter(function (a) { return a.isa === g[0]; }); if (!G.length) return ''; C.fold = C.fold || {}; var open = !C.fold[g[0]] || !!C.q || G.some(function (a) { return a.id === C.sel; }) && C.fold[g[0]] === 'auto';
+      var inc2 = G.filter(function (a) { var cc = completeness(a); return cc.ok < cc.n; }).length;
+      return '<button class="cgrp2" data-a="cFold" data-v="' + g[0] + '" aria-expanded="' + open + '"><span class="chv">' + ic('i-chev') + '</span><span class="gt">' + g[1] + '</span>' + (inc2 ? '<em title="Actividades incompletas">' + inc2 + ' por completar</em>' : '') + '<b>' + G.length + '</b></button>' + (open ? G.map(listRow).join('') : ''); }).join('') + (L.length ? '' : '<p class="sm mut" style="padding:16px">' + (all.length ? 'Ninguna actividad con este filtro.' : 'Este proceso aún no tiene actividades. Escribe la primera abajo o usa Captura rápida.') + '</p>') + '</div>' +
       (BP.can('edit') ? '<div class="cadd"><input class="inp" data-cnew="1" placeholder="+ Nueva actividad (verbo + objeto) · Enter"></div>' : '') + '</aside>';
   }
   function sec(n, title, miss, body) { return '<section class="csec"><div class="csh"><span class="n">' + n + '</span><b>' + title + '</b>' + (miss === true ? '<span class="cok">✓ Completo</span>' : miss ? '<span class="cmiss">Falta: ' + esc(miss) + '</span>' : '') + '</div>' + body + '</section>'; }
@@ -3639,6 +3649,7 @@ var BP = (function () {
       case 'cStep': C.step = Math.max(0, Math.min(8, +b.dataset.i)); C.io = null; BP.render(); var ce2 = document.querySelector('.ced'); if (ce2) ce2.scrollTop = 0; return true;
       case 'cNextAct': C.sel = b.dataset.id; C.io = null; BP.render(); var ce3 = document.querySelector('.ced'); if (ce3) ce3.scrollTop = 0; return true;
       case 'cBack': C.det = false; BP.render(); return true;
+      case 'cFold': C.fold = C.fold || {}; C.fold[b.dataset.v] = !C.fold[b.dataset.v]; BP.render(); return true;
       case 'cSugT': C.sugOpen = !C.sugOpen; BP.render(); return true;
       case 'cGo': C.sel = b.dataset.id; C.det = true; V.mode = 'constructor'; BP.render(); return true;
       case 'cF': C.f = b.dataset.v; BP.render(); return true;
