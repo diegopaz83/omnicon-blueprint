@@ -3868,8 +3868,7 @@ var BP = (function () {
         (i < 5 ? '<span class="jn-ln" aria-hidden="true"></span>' : '') + '</div>';
     });
     var open = s.park.filter(function (p) { return p.status !== 'cerrada'; }).length;
-    h += '</div><div class="jn-al"><span class="jn-h2">Siempre a la mano</span><button data-mod="parking" data-sub="x"' + (mod === 'parking' ? ' aria-current="page"' : '') + ' data-tip="Dudas del cliente">' + ic('i-msg') + '<span class="n-lbl">Dudas del cliente</span>' + (open ? '<span class="jn-b g">' + open + '</span>' : '') + '</button><button data-mod="configuracion" data-sub="x"' + (mod === 'configuracion' ? ' aria-current="page"' : '') + ' data-tip="Configuración">' + ic('i-gear') + '<span class="n-lbl">Configuración</span></button></div>' +
-      '<div class="jn-lg n-lbl"><span><i class="ok"></i>Listo</span><span><i class="wa"></i>Con avisos</span><span><i class="pe"></i>Sin empezar</span></div>';
+    h += '</div><div class="jn-al"><span class="jn-h2">Siempre a la mano</span><button data-mod="parking" data-sub="x"' + (mod === 'parking' ? ' aria-current="page"' : '') + ' data-tip="Dudas del cliente">' + ic('i-msg') + '<span class="n-lbl">Dudas del cliente</span>' + (open ? '<span class="jn-b g">' + open + '</span>' : '') + '</button><button data-mod="configuracion" data-sub="x"' + (mod === 'configuracion' ? ' aria-current="page"' : '') + ' data-tip="Configuración">' + ic('i-gear') + '<span class="n-lbl">Configuración</span></button></div>';
     return h;
   };
   BP.onNav = function (b) { if (b.dataset.sub) { J.sub = b.dataset.sub === 'x' ? null : b.dataset.sub; J.ret = null; } };
