@@ -1457,6 +1457,18 @@ button.cgrp2 em{font-style:normal;font-size:10.5px;font-weight:500;letter-spacin
   .capbtn i{width:11px;height:11px}
 }
 @media (max-width:640px){.capbtn span.capn:not([hidden]){display:inline-flex!important}}
+.stp2{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:8px;align-items:start;padding:8px 8px 8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.stp2>b{width:26px;height:26px;margin-top:5px;border-radius:50%;background:var(--surface-2);color:var(--muted);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.stp2 textarea{min-height:36px;resize:none;overflow:hidden;border-color:transparent;background:transparent;padding:7px 6px;line-height:1.45}
+.stp2 textarea:focus{border-color:var(--bright);background:var(--surface)}
+.stb{display:flex;gap:4px;padding-top:2px}
+.sbtn{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--muted);display:inline-flex;align-items:center;justify-content:center}
+.sbtn .ic{width:16px;height:16px}
+.sbtn:hover:not(:disabled){border-color:var(--bright);color:var(--bright)}
+.sbtn:disabled{opacity:.3;cursor:not-allowed}
+.sbtn.del:hover{border-color:var(--err);color:var(--err)}
+@media (max-width:640px){.stp2{grid-template-columns:26px minmax(0,1fr)}.stb{grid-column:2;justify-content:flex-end}.sbtn{width:40px;height:40px}}
+.sbtn .ar{display:inline-flex}.sbtn .ar.up{transform:rotate(-90deg)}.sbtn .ar.dn{transform:rotate(90deg)}
 </style>
 </head>
 <body>
@@ -3488,7 +3500,7 @@ var BP = (function () {
       '<div class="wsub"><span class="lab">Herramienta tecnológica</span><div class="wchips">' + chipBtn(!a.tool, 'cTool', '', 'Sin herramienta', dis) + s.cat.systems.map(function (t) { return chipBtn(a.tool === t, 'cTool', t, t, dis); }).join('') + '</div></div>' +
       '<div class="wsub"><span class="lab">¿Qué hace la persona? (marca las que apliquen)</span><div class="wchips">' + [['form', 'Llena un formulario'], ['conn', 'Usa una conexión o sistema'], ['print', 'Imprime'], ['scan', 'Escanea'], ['paperDoc', 'Usa papel']].map(function (x) { return '<button class="tog" data-a="cTog" data-v="' + x[0] + '" aria-pressed="' + !!a[x[0]] + '"' + dis + '>' + x[1] + '</button>'; }).join('') + '</div></div>';
     if (i === 4) { var h = BP.hoursMonth(a); return Q('¿Cuánto tarda?', 'Sin tiempo no se puede calcular el beneficio de automatizarla. Un estimado razonable es mejor que nada.') + '<div class="wtime"><label class="f">Minutos por vez<input class="inp' + (a.dur == null || a.dur === '' ? ' bad' : '') + '" type="number" min="0" data-cf="dur" value="' + (a.dur == null ? '' : a.dur) + '" placeholder="Ej.: 15"' + dis + '></label><span class="wx">×</span><label class="f">Veces al mes<input class="inp" type="number" min="0" data-cf="perMonth" value="' + (a.perMonth == null ? '' : a.perMonth) + '" placeholder="Ej.: 60"' + dis + '></label><span class="wx">=</span><div class="wres"><b>' + (h != null ? h.toFixed(1) + ' h' : '—') + '</b><small>al mes</small></div></div>'; }
-    if (i === 5) return Q('¿Qué pasos sigue?', 'Un paso por línea, en el orden real. Arrastra ⋮⋮ para reordenar.') + '<div class="steps">' + st.map(function (x, k) { return '<div class="stp" data-si="' + k + '"><span class="hd" title="Arrastra para reordenar" aria-hidden="true">⋮⋮</span><b>' + (k + 1) + '.</b><textarea class="inp" rows="1" data-step="' + k + '"' + dis + '>' + esc(x) + '</textarea>' + (ed ? '<button class="x" data-a="stDel" data-i="' + k + '" aria-label="Quitar paso">' + ic('i-x') + '</button>' : '') + '</div>'; }).join('') + (ed ? '<button class="ch add" data-a="stAdd" style="align-self:flex-start">+ Agregar paso</button>' : '') + '</div>';
+    if (i === 5) return Q('¿Qué pasos sigue?', 'Un paso por línea, en el orden real. Usa las flechas para subir o bajar un paso.') + '<div class="steps">' + st.map(function (x, k) { return '<div class="stp2" data-si="' + k + '"><b>' + (k + 1) + '</b><textarea class="inp" rows="1" data-step="' + k + '"' + dis + ' aria-label="Paso ' + (k + 1) + '">' + esc(x) + '</textarea>' + (ed ? '<span class="stb"><button class="sbtn" data-a="stMv" data-i="' + k + '" data-d="-1"' + (k ? '' : ' disabled') + ' aria-label="Subir paso ' + (k + 1) + '" title="Subir"><span class="ar up">' + ic('i-chev') + '</span></button><button class="sbtn" data-a="stMv" data-i="' + k + '" data-d="1"' + (k < st.length - 1 ? '' : ' disabled') + ' aria-label="Bajar paso ' + (k + 1) + '" title="Bajar"><span class="ar dn">' + ic('i-chev') + '</span></button><button class="sbtn del" data-a="stDel" data-i="' + k + '" aria-label="Quitar paso ' + (k + 1) + '" title="Quitar">' + ic('i-x') + '</button></span>' : '') + '</div>'; }).join('') + (ed ? '<button class="ch add" data-a="stAdd" style="align-self:flex-start">+ Agregar paso</button>' : '') + '</div>';
     if (i === 6 || i === 7) { var dir = i === 6 ? 'in' : 'out', L = i === 6 ? ins : outs, no = i === 6 ? 'noIn' : 'noOut', paper = outs.some(function (o) { return /papel/i.test(o[0].medium); }), sys = outs.some(function (o) { return SYS_RX.test(o[0].medium); });
       return Q(i === 6 ? '¿De dónde toma la información?' : '¿Dónde deja la información?', 'Cada tarjeta es un medio (papel, sistema, Excel…), el documento o formato y sus campos.') + '<div class="wio">' + (L.length ? L.map(function (p) { return ioCard(a, p[0], p[1], ed); }).join('') : (a[no] ? '<p class="sm mut">Marcada: ' + (i === 6 ? 'no recibe' : 'no produce') + ' información.</p>' : '')) + '</div>' +
         (ed ? '<div class="row"><button class="ch add" data-a="ioAdd" data-v="' + dir + '">+ Agregar ' + (i === 6 ? 'entrada' : 'salida') + '</button>' + (L.length ? '' : '<button class="tog" data-a="cTog" data-v="' + no + '" aria-pressed="' + !!a[no] + '">' + (i === 6 ? 'No recibe información' : 'No produce información') + '</button>') + '</div>' : '') +
@@ -3637,7 +3649,7 @@ var BP = (function () {
   BP.M.procesos.after = function (c) {
     if (['constructor', 'rol', 'docs', 'sis'].indexOf(V.mode) < 0) return prevAfter(c);
     var cs = document.querySelector('.crow.on'); if (cs) cs.scrollIntoView({ block: 'nearest' });
-    document.querySelectorAll('.stp textarea, .ctitle, .wname').forEach(function (t) { t.style.height = 'auto'; t.style.height = t.scrollHeight + 'px'; });
+    document.querySelectorAll('.stp textarea, .stp2 textarea, .ctitle, .wname').forEach(function (t) { t.style.height = 'auto'; t.style.height = t.scrollHeight + 'px'; });
     var f = document.querySelector('[data-cnewrole],[data-cfreq],.iocard.ed input'); if (f) f.focus();
     var q = document.querySelector('#qTx'); if (q) q.focus();
     bindSteps();
@@ -3676,7 +3688,8 @@ var BP = (function () {
       case 'cMode': if (BP.deny('edit')) return true; edit(A); A.mode = b.dataset.v; BP.render(); return true;
       case 'cTool': if (BP.deny('edit')) return true; edit(A); A.tool = b.dataset.v; BP.render(); return true;
       case 'cTog': if (BP.deny('edit')) return true; edit(A); A[b.dataset.v] = !A[b.dataset.v]; BP.render(); return true;
-      case 'stAdd': if (BP.deny('edit')) return true; var L = stepsL(A); edit(A); L.push('Nuevo paso'); setSteps(A, L); BP.render(); var tt = document.querySelectorAll('.stp textarea'); if (tt.length) { tt[tt.length - 1].focus(); tt[tt.length - 1].select(); } return true;
+      case 'stAdd': if (BP.deny('edit')) return true; var L = stepsL(A); edit(A); L.push('Nuevo paso'); setSteps(A, L); BP.render(); var tt = document.querySelectorAll('.stp2 textarea'); if (tt.length) { tt[tt.length - 1].focus(); tt[tt.length - 1].select(); } return true;
+      case 'stMv': if (BP.deny('edit')) return true; var Lm = stepsL(A), from = +b.dataset.i, to = from + (+b.dataset.d); if (to < 0 || to >= Lm.length) return true; edit(A); Lm.splice(to, 0, Lm.splice(from, 1)[0]); setSteps(A, Lm); BP.render(); var nb = document.querySelector('.stp2[data-si="' + to + '"] [data-a="stMv"][data-d="' + b.dataset.d + '"]'); if (nb && !nb.disabled) nb.focus(); return true;
       case 'stDel': if (BP.deny('edit')) return true; var L2 = stepsL(A); edit(A); L2.splice(+b.dataset.i, 1); setSteps(A, L2); BP.render(); return true;
       case 'ioAdd': if (BP.deny('edit')) return true; edit(A); A.io.push({ dir: b.dataset.v, medium: 'Papel', doc: '', fields: [] }); if (b.dataset.v === 'in') A.noIn = false; else A.noOut = false; C.io = { id: A.id, i: A.io.length - 1 }; syncIO(A); BP.render(); return true;
       case 'ioEdit': C.io = { id: A.id, i: +b.dataset.i }; BP.render(); return true;
@@ -3715,7 +3728,7 @@ var BP = (function () {
     var el = e.target; if (el.dataset.crole != null) { C.role = el.value; BP.render(); return; }
     if (el.dataset.cf || el.dataset.step != null || el.dataset.cpp) fieldChange(el);
   });
-  main.addEventListener('input', function (e) { var el = e.target; if (el.dataset && el.dataset.cq) { C.q = el.value; var p = el.selectionStart; BP.render(); var q2 = document.querySelector('[data-cq]'); if (q2) { q2.focus(); q2.setSelectionRange(p, p); } } if (el.matches && el.matches('.stp textarea, .ctitle, .wname')) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; } });
+  main.addEventListener('input', function (e) { var el = e.target; if (el.dataset && el.dataset.cq) { C.q = el.value; var p = el.selectionStart; BP.render(); var q2 = document.querySelector('[data-cq]'); if (q2) { q2.focus(); q2.setSelectionRange(p, p); } } if (el.matches && el.matches('.stp textarea, .stp2 textarea, .ctitle, .wname')) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; } });
   main.addEventListener('keydown', function (e) {
     if (BP.mod !== 'procesos' || ['constructor', 'rol', 'docs', 'sis'].indexOf(V.mode) < 0) return;
     var el = e.target, s = S();
