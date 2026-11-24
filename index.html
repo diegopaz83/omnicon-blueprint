@@ -1554,9 +1554,9 @@ var BP = (function () {
     return '<section class="hello"><div><h1>Engagements</h1><p>Elige un engagement para trabajar dentro de él. Todos los roles ven esta misma vista.</p></div>' +
       '<button class="b pri" data-a="newEng">' + ic('i-plus') + 'Nuevo engagement</button></section>' +
       '<div class="kpis"><div class="kpi"><span>Engagements activos</span><b>' + L.length + '</b><small>' + L.map(function (x) { return esc(x.s.eng.client); }).join(' · ') + '</small></div>' +
-      '<div class="kpi"><span>En levantamiento</span><b>' + draft + '</b><small>Draft</small></div>' +
-      '<div class="kpi"><span>Aprobados por el cliente</span><b>' + appr + '</b></div>' +
-      '<div class="kpi"><span>Estimación propuesta total</span><b>' + BP.usd(L.reduce(function (a, x) { return a + x.est; }, 0)) + '</b><small>Suma de los engagements</small></div></div>' +
+      '<div class="kpi"><span>En levantamiento (Draft)</span><b>' + draft + '</b><small>' + (L.filter(function (x) { return x.v.status === 'Draft'; }).map(function (x) { return esc(x.s.eng.client); }).join(' · ') || 'Ninguno') + '</small></div>' +
+      '<div class="kpi"><span>Aprobados por el cliente</span><b>' + appr + '</b><small>' + (L.filter(function (x) { return x.v.status === 'Approved'; }).map(function (x) { return esc(x.s.eng.client); }).join(' · ') || 'Ninguno') + '</small></div>' +
+      '<div class="kpi"><span>Estimación propuesta total</span><b>' + BP.usd(L.reduce(function (a, x) { return a + x.est; }, 0)) + '</b><small>' + L.map(function (x) { return esc(x.s.eng.client) + ': ' + BP.usd(x.est); }).join('<br>') + '</small></div></div>' +
       '<div class="list">' + L.map(function (st) {
         var s = st.s, pct = st.comp == null ? null : Math.round(st.comp * 100);
         return '<button class="li" data-a="openEng" data-key="' + st.key + '" style="text-align:left;padding:0;overflow:hidden;align-items:stretch' + (st.key === BP.curKey ? ';border-color:var(--bright)' : '') + '">' +
