@@ -1183,6 +1183,38 @@ table.xt tr.addrow .cin{outline:1px dashed var(--muted)}
   * {-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 #dPrintArea{display:none}
+
+/* flujo del entregable: círculos numerados unidos por una línea */
+.dflow{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-surf);padding:16px 10px 12px}
+.dflow ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(10,minmax(0,1fr))}
+.dflow li{position:relative;display:flex;justify-content:center}
+.dflow li:not(:first-child)::before{content:"";position:absolute;top:17px;right:50%;width:100%;height:3px;background:var(--line);z-index:0}
+.dflow li.ok:not(:first-child)::before,.dflow li.on:not(:first-child)::before{background:var(--cyan)}
+.dflow li.todo:not(:first-child)::before{background:var(--line)}
+.dflow button{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 2px;width:100%;color:var(--muted);min-height:44px}
+.dflow .c{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;background:var(--surface);border:2px solid var(--line);color:var(--muted);transition:transform .15s}
+.dflow .t{font-size:11.5px;line-height:1.25;text-align:center;max-width:100%;overflow-wrap:anywhere}
+.dflow li.ok .c{background:var(--cyan);border-color:var(--cyan);color:var(--navy)}
+.dflow li.ok .t{color:var(--ink)}
+.dflow li.todo .c{background:var(--off-bg);border-color:#b9c5d3;color:#6b7a8c}
+.dflow li.off .c{border-style:dashed;background:transparent;opacity:.6}.dflow li.off .t{text-decoration:line-through;opacity:.6}
+.dflow li.on .c{box-shadow:0 0 0 4px var(--surface),0 0 0 6px var(--bright);transform:scale(1.08)}
+.dflow li.on .t{color:var(--ink);font-weight:600}
+.dflow button:hover .c{border-color:var(--bright)}
+.dflow-m{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:12px 6px 0;font-size:12.5px;color:var(--muted)}
+.dflow-m b{color:var(--ink);font-weight:600}
+.dflow-lg{display:inline-flex;align-items:center;gap:6px}
+.dflow-lg i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-left:8px}
+.dflow-lg i.ok{background:var(--cyan)}.dflow-lg i.todo{background:var(--off-bg);border:1.5px solid #b9c5d3}.dflow-lg i.off{border:1.5px dashed #9aa8b8}
+@media (max-width:760px){
+  .dflow{padding:12px 6px 10px}
+  .dflow .t{display:none}
+  .dflow .c{width:28px;height:28px;font-size:12px}
+  .dflow li:not(:first-child)::before{top:13px}
+  .dflow li.on .c{box-shadow:0 0 0 3px var(--surface),0 0 0 5px var(--bright)}
+  .dflow-m{flex-direction:column;align-items:flex-start;margin-top:10px}
+  .dflow-m b{font-size:14px}
+}
 </style>
 </head>
 <body>
@@ -3584,7 +3616,7 @@ var BP = (function () {
   BP.M.entregable = {
     render: function () {
       var s = S(), v = s.versions[s.versions.length - 1], sec = SECS[D.i], inc = included(), idx = inc.indexOf(sec) + 1, ready = SECS.filter(function (x) { return !check(x.k).length; }).length, chg = BP.diffSince(v).length, E = BP.can('edit'), skip = !!st().skip[sec.k];
-      var steps = '<nav class="dstepper" aria-label="Narrativa Omnicon">' + SECS.map(function (x, i) { var c = check(x.k), sk = !!st().skip[x.k], state = sk ? 'off' : c.length ? 'revisar' : 'listo'; return '<button class="dst ' + state + (i === D.i ? ' on' : '') + '" data-a="dGo" data-i="' + i + '"' + (i === D.i ? ' aria-current="step"' : '') + '><span class="n"><span class="dot">' + (state === 'listo' ? '✓' : i + 1) + '</span>' + esc(x.t) + '</span><span class="s">' + (sk ? 'No se incluye' : c.length ? 'Revisar' : 'Listo') + '</span></button>'; }).join('') + '</nav>';
+      var steps = '<nav class="dflow" aria-label="Narrativa Omnicon"><ol>' + SECS.map(function (x, i) { var c = check(x.k), sk = !!st().skip[x.k], state = sk ? 'off' : c.length ? 'todo' : 'ok'; return '<li class="' + state + (i === D.i ? ' on' : '') + '"><button data-a="dGo" data-i="' + i + '"' + (i === D.i ? ' aria-current="step"' : '') + ' aria-label="Paso ' + (i + 1) + ': ' + esc(x.t) + ' · ' + (sk ? 'no se incluye' : c.length ? 'por completar' : 'listo') + '"><span class="c">' + (i + 1) + '</span><span class="t">' + esc(x.t) + '</span></button></li>'; }).join('') + '</ol><p class="dflow-m"><b>Paso ' + (D.i + 1) + ' de ' + SECS.length + ' · ' + esc(sec.t) + '</b><span class="dflow-lg"><i class="ok"></i>Listo<i class="todo"></i>Por completar<i class="off"></i>No se incluye</span></p></nav>';
       var c = check(sec.k);
       var coach = '<aside class="dcoach"><span class="dk">Paso ' + (D.i + 1) + ' de ' + SECS.length + '</span><h3>' + esc(sec.t) + '</h3><p class="sm mut">' + esc(sec.d) + '.</p>' +
         (c.length ? '<div class="dchk warn"><b>Para revisar</b><ul>' + c.map(function (z) { return '<li>' + esc(z) + '</li>'; }).join('') + '</ul></div>' : '<div class="dchk ok"><b>✓ Listo para entregar</b><span>Los datos de esta sección están completos.</span></div>') +
@@ -3596,7 +3628,7 @@ var BP = (function () {
         (chg ? '<div class="avn"><div class="avn-h">' + ic('i-alert') + '<span><b>' + chg + ' cambios desde la Rev ' + v.rev + '.</b> La vista previa ya los incluye; el cliente seguirá viendo la Rev ' + v.rev + ' hasta que se congele una nueva versión.</span></div></div>' : '') +
         steps + '<div class="dwrap"><div class="dprev' + (skip ? ' skipped' : '') + '">' + page(sec.k, idx || '—', inc.length, body(sec.k)) + '</div>' + coach + '</div>' + foot + zoomModal();
     },
-    after: function () { var on = document.querySelector('.dst.on'); if (on) on.scrollIntoView({ block: 'nearest', inline: 'center' }); }
+    after: function () {}
   };
   function zoomModal() {
     if (!D.zoom) return ''; var SH = sheets(), sh = D.zoom === 'e2e' ? S().e2e : D.zoom === 'isa' ? SH.filter(function (z) { return z.kind === 'isa'; })[0] : SH.filter(function (z) { return z.kind === 'free'; })[0];
