@@ -1431,6 +1431,12 @@ table.xt tr.addrow .cin{outline:1px dashed var(--muted)}
   .pv-bar .seg button{white-space:nowrap}
 }
 .side-collapsed .jn-home{display:none!important}
+.wio .iocard.ed{grid-column:1/-1;padding:18px 20px;gap:14px;border-radius:14px;background:var(--surface-2);border:1.5px solid var(--bright)}
+.ioe-h{display:flex;align-items:baseline;gap:10px}.ioe-h b{font-size:15px;font-weight:600}
+.ioe-f{display:flex;flex-direction:column;gap:8px}
+.ioe-g{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px}
+.ioe-g .inp{min-height:42px}
+@media (max-width:700px){.ioe-g{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -3435,9 +3441,12 @@ var BP = (function () {
   function ioCard(a, x, i, ed) {
     var k = kindOf(x), use = x.doc ? docUse(x.doc) : null, n = use ? use.c.length + use.l.length + use.m.length : 0, editing = C.io && C.io.id === a.id && C.io.i === i;
     if (editing) {
-      var media = ['Papel', 'Excel', 'Comunicación verbal', 'Documento digital'].concat(S().cat.systems.filter(function (s) { return s !== 'Excel'; }));
+      var media = ['Papel', 'Excel', 'Comunicación verbal', 'Documento digital'].concat(S().cat.systems.filter(function (s2) { return s2 !== 'Excel'; }));
       if (x.medium && media.indexOf(x.medium) < 0) media.unshift(x.medium);
-      return '<div class="iocard ed"><label class="f">Medio<select class="inp" data-io="medium">' + media.map(function (m) { return '<option' + (m === x.medium ? ' selected' : '') + '>' + esc(m) + '</option>'; }).join('') + '</select></label><label class="f">Documento o formato (opcional)<input class="inp" data-io="doc" list="dlDocs" value="' + esc(x.doc) + '" placeholder="Elige del catálogo o escribe uno nuevo"></label><label class="f">Campos, separados por coma<input class="inp" data-io="fields" value="' + esc(x.fields.join(', ')) + '" placeholder="Lote, Tanque, Fecha"></label><div class="row"><button class="b sm pri" data-a="ioSave">Listo</button><button class="b sm" data-a="ioDel" style="color:var(--err-ink)">Quitar</button></div></div>';
+      return '<div class="iocard ed"><div class="ioe-h"><b>' + (x.dir === 'in' ? 'Entrada' : 'Salida') + '</b><span class="sm mut">' + (x.dir === 'in' ? 'De dónde toma la información' : 'Dónde deja la información') + '</span></div>' +
+        '<div class="ioe-f"><span class="lab">Medio</span><div class="wchips" role="radiogroup" aria-label="Medio">' + media.map(function (mm) { return '<button type="button" class="ch' + (mm === x.medium ? ' on' : '') + '" role="radio" aria-checked="' + (mm === x.medium) + '" data-a="ioMed" data-v="' + esc(mm) + '">' + esc(mm) + '</button>'; }).join('') + '</div><input type="hidden" data-io="medium" value="' + esc(x.medium) + '"></div>' +
+        '<div class="ioe-g"><label class="f"><span>Documento o formato <span class="mut">(opcional)</span></span><input class="inp" data-io="doc" list="dlDocs" value="' + esc(x.doc) + '" placeholder="Elige del catálogo o escribe uno nuevo"></label><label class="f"><span>Campos <span class="mut">(separados por coma)</span></span><input class="inp" data-io="fields" value="' + esc(x.fields.join(', ')) + '" placeholder="Ej.: Lote, Tanque, Fecha"></label></div>' +
+        '<div class="row"><button class="b pri" data-a="ioSave">Guardar ' + (x.dir === 'in' ? 'entrada' : 'salida') + '</button><button class="b" data-a="ioCancel">Cancelar</button><span class="sp"></span><button class="b" data-a="ioDel" style="color:var(--err-ink)">Quitar</button></div></div>';
     }
     return '<div class="iocard"><div class="row" style="gap:6px">' + tag(k[0], k[1]) + '<b>' + esc(x.doc || x.medium) + '</b>' + (ed ? '<span class="sp"></span><button class="x" data-a="ioEdit" data-i="' + i + '" aria-label="Editar">' + ic('i-edit') + '</button>' : '') + '</div>' + (x.doc ? '<span class="sm mut">' + esc(x.medium) + '</span>' : '') + (x.fields.length ? '<span class="sm">Campos: ' + x.fields.map(esc).join(' · ') + '</span>' : '<span class="sm mut">Sin campos registrados</span>') + (n > 2 ? '<span class="sm" style="color:var(--err-ink)">Se usa en ' + n + ' actividades</span>' : '') + '</div>';
   }
@@ -3649,6 +3658,8 @@ var BP = (function () {
       case 'ioAdd': if (BP.deny('edit')) return true; edit(A); A.io.push({ dir: b.dataset.v, medium: 'Papel', doc: '', fields: [] }); if (b.dataset.v === 'in') A.noIn = false; else A.noOut = false; C.io = { id: A.id, i: A.io.length - 1 }; syncIO(A); BP.render(); return true;
       case 'ioEdit': C.io = { id: A.id, i: +b.dataset.i }; BP.render(); return true;
       case 'ioSave': var box = b.closest('.iocard'), x = A.io[C.io.i]; edit(A); x.medium = box.querySelector('[data-io="medium"]').value; x.doc = box.querySelector('[data-io="doc"]').value.trim(); x.fields = box.querySelector('[data-io="fields"]').value.split(',').map(function (f) { return f.trim(); }).filter(Boolean); if (x.doc && s.cat.docs.indexOf(x.doc) < 0) { s.cat.docs.push(x.doc); BP.toast('«' + x.doc + '» agregado al catálogo de documentos'); } syncIO(A); C.io = null; BP.render(); return true;
+      case 'ioMed': var bx = b.closest('.iocard'); bx.querySelectorAll('[data-a="ioMed"]').forEach(function (z) { z.classList.toggle('on', z === b); z.setAttribute('aria-checked', z === b); }); bx.querySelector('[data-io="medium"]').value = b.dataset.v; return true;
+      case 'ioCancel': var cx = A.io[C.io.i]; if (cx && !cx.medium) A.io.splice(C.io.i, 1); C.io = null; BP.render(); return true;
       case 'ioDel': edit(A); A.io.splice(C.io.i, 1); syncIO(A); C.io = null; BP.render(); return true;
       case 'cReq': if (BP.deny('edit')) return true; E.push(); s.reqs.push({ id: BP.nextId('R', s.reqs.map(function (r) { return r.id; }).concat(s.retiredR || [])), acts: [A.id], text: 'Nuevo requerimiento de ' + A.id + ' ' + A.name, type: '', pillars: [], moscow: '', stage: 0, origin: 'act', equip: '' }); BP.touch('act', A.id); BP.render(); BP.toast('Requerimiento creado: redáctalo en Requerimientos'); return true;
       case 'cQuick': if (BP.deny('edit')) return true; C.quick = true; BP.render(); return true;
