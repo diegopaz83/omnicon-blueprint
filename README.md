@@ -13,6 +13,12 @@ Caso de prueba: **Baxter Cali · Mezclas de Soluciones** (datos reales del levan
 - Importar y exportar la plantilla DT Enabler en Excel, con validación.
 - Diagnóstico, requerimientos, iniciativas, roadmap y estimación con supuestos, entregable, revisión de calidad, Parking Lot y versiones.
 
+## Engagements de demostración
+
+- **Baxter Cali** · caso real (levantamiento As-Is de Mezclas de Soluciones).
+- **Lácteos La Pradera** · datos ficticios, engagement completo y aprobado.
+- **Cementos del Pacífico** · datos ficticios, levantamiento en curso.
+
 ## Notas
 
 - Es un prototipo de un solo archivo (`index.html`): los cambios viven en memoria y se reinician al recargar.
