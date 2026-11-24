@@ -1066,6 +1066,123 @@ table.xt tr.addrow .cin{outline:1px dashed var(--muted)}
 .umsw .umtx{display:flex;flex-direction:column;line-height:1.25;min-width:0}
 .umsw .umtx b{font-size:13px;font-weight:600}
 .umsw .umtx span{font-size:12px;color:var(--muted)}
+/* ===== Entregable · Narrativa Omnicon ===== */
+.dstepper{display:flex;overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-surf);scrollbar-width:thin}
+.dst{flex:1 0 128px;text-align:left;padding:10px 12px;display:grid;gap:3px;border-right:1px solid var(--line-2);position:relative;min-height:62px;color:var(--ink)}
+.dst:last-child{border-right:0}
+.dst .n{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;line-height:1.25}
+.dst .dot{flex:none;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10.5px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+.dst .s{font-size:11px;color:var(--muted)}
+.dst.listo .dot{background:var(--cyan);border-color:var(--cyan);color:var(--navy)}
+.dst.revisar .dot{background:var(--warn-bg);border-color:#e3a008;color:var(--warn-ink)}.dst.revisar .s{color:var(--warn-ink)}
+.dst.off{opacity:.5}.dst.off .n{text-decoration:line-through}
+.dst.on{background:var(--primary-soft)}.dst.on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--bright)}
+.dwrap{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start}
+.dprev{min-width:0}.dprev.skipped{opacity:.45}
+.dcoach{position:sticky;top:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-surf);padding:16px;display:flex;flex-direction:column;gap:12px}
+.dcoach h3{font-size:17px;font-weight:600}
+.dcoach .dk{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.dchk{border-radius:10px;padding:10px 12px;font-size:13px;display:flex;flex-direction:column;gap:4px}
+.dchk ul{margin:0;padding-left:18px;line-height:1.6}
+.dchk.warn{background:var(--warn-bg);color:var(--warn-ink)}.dchk.ok{background:var(--ok-bg);color:var(--ok-ink)}
+.dfoot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:4px 0 24px}
+/* la página del documento: siempre clara, como el entregable impreso */
+.dpage{container-type:inline-size;background:#fff;color:#001c3f;border-radius:14px;box-shadow:0 1px 2px rgba(0,28,63,.06),0 12px 32px rgba(0,28,63,.10);overflow:hidden;display:flex;flex-direction:column;font-family:var(--font)}
+.dph{display:flex;align-items:center;gap:12px;padding:14px 32px;background:#001c3f;color:#c9d6e6;font-size:12px}
+.dph span:nth-child(2){flex:1}
+.dpn{font-weight:600;color:#00dcfa;font-size:13px}
+.dlogo{height:30px;width:auto;align-self:flex-start;flex:none}.dlogo.sm{height:20px}
+.dpb{padding:28px 32px 26px;display:flex;flex-direction:column;gap:16px}
+.dpb .dk,.dcov .dk{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#0a58eb}
+.dpb h2{font-size:28px;font-weight:600;line-height:1.15;margin:-8px 0 0;letter-spacing:-.01em}
+.dpb h3{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#3d4f66;margin:6px 0 2px}
+.dpb p{font-size:14px;line-height:1.6;margin:0}
+.dmsg{font-size:15.5px!important;line-height:1.55!important;font-weight:500;color:#001c3f;padding:12px 16px;border-left:4px solid #00dcfa;background:#f2f8fc;border-radius:0 10px 10px 0}
+.dpf{display:flex;justify-content:space-between;gap:10px;padding:10px 32px;border-top:1px solid #e6ecf2;font-size:11px;color:#6b7a8c;margin-top:auto}
+.dkpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.dkpi{border:1px solid #e1e8f0;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;background:#fbfcfe}
+.dkpi b{font-size:24px;font-weight:600;line-height:1.15;color:#001c3f}
+.dkpi span{font-size:12px;color:#556578}.dkpi small{font-size:11px;color:#0a58eb}
+.dg2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+.dg2>div{min-width:0;overflow-x:auto}
+.dg3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.dbar{display:grid;grid-template-columns:minmax(110px,40%) 1fr 34px;gap:10px;align-items:center;font-size:12.5px;padding:3px 0}
+.dbar i{height:10px;border-radius:5px;background:#eef2f6;overflow:hidden}.dbar em{display:block;height:100%;border-radius:5px}
+.dbar b{text-align:right;font-weight:600}
+.dlist{margin:0;padding-left:18px;font-size:14px;line-height:1.7}
+.dmut{color:#6b7a8c!important}
+.dtab{width:100%;border-collapse:collapse;font-size:12.5px}
+.dtab th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#556578;padding:7px 8px;border-bottom:2px solid #001c3f}
+.dtab td{padding:7px 8px;border-bottom:1px solid #e6ecf2;vertical-align:top;line-height:1.45}
+.dtab .r{text-align:right}.dtab tr.tot td{font-weight:600;border-top:2px solid #001c3f;border-bottom:0}
+.dtab.small td{padding:5px 8px;font-size:12px}
+.dm{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.dfig{margin:0;display:flex;flex-direction:column;gap:6px}
+.dfig figcaption{font-size:12px;color:#556578}
+.dzoom{position:relative;border:1px solid #e1e8f0;border-radius:12px;overflow:hidden;background:#fff}
+.dscroll{overflow-x:auto;overscroll-behavior-x:contain}
+.dscroll .dsvg{display:block;width:100%;height:auto;max-height:560px}
+.dscroll .dsvg.wide{width:auto;height:420px;max-width:none;max-height:none}
+.dzi{position:absolute;right:10px;top:10px;display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:6px 12px;min-height:32px;border-radius:999px;background:rgba(0,28,63,.88);color:#fff}
+.dzi:hover{background:#0a58eb}
+.dzi .ic{width:13px;height:13px}
+.dleg{display:flex;flex-wrap:wrap;gap:14px;font-size:11.5px;color:#556578}
+.dleg i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.dempty{padding:28px;border:1px dashed #c9d4e1;border-radius:12px;text-align:center;color:#556578;font-size:13.5px}
+.dcall{margin-top:10px;padding:12px 14px;border-radius:10px;background:#f1ecff;display:flex;flex-direction:column;gap:2px;font-size:13px;color:#2d1a66}
+.dcat{border-radius:12px;padding:14px;background:#fff4f4;border:1px solid #f4d3d5;display:flex;flex-direction:column;gap:2px}
+.dcat b{font-size:28px;font-weight:600;color:#8f2a30;line-height:1.1}.dcat span{font-size:13px;line-height:1.35}.dcat small{font-size:11px;color:#8f2a30}
+.dpp{display:flex;flex-direction:column;gap:8px}
+.dppc{display:grid;grid-template-columns:46px 1fr;gap:12px;align-items:start;padding:10px 12px;border:1px solid #e6ecf2;border-radius:10px}
+.dppc b{font-size:13.5px;font-weight:600}.dppc p{font-size:12.5px!important;color:#3d4f66;margin-top:2px!important}
+.did{font-size:12px;font-weight:600;padding:3px 0;text-align:center;border-radius:6px;background:#001c3f;color:#fff}
+.dstages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.dstage{border-radius:12px;border:1px solid #e1e8f0;border-top:5px solid var(--c);padding:12px;display:flex;flex-direction:column;gap:6px;background:#fbfcfe}
+.dstage>b{font-size:14px;font-weight:600;line-height:1.3}.dstage .dk{font-size:10px!important;color:#556578!important}
+.damt{font-size:18px;font-weight:600;color:var(--c)}
+.dstage ul{margin:0;padding-left:16px;font-size:12px;line-height:1.55;color:#3d4f66}
+.dnote{font-size:12px!important;color:#556578}
+.dsup{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.dsup li{font-size:12.5px;line-height:1.5;padding:8px 10px;border-radius:8px;background:#fff9e8}
+.dsup li small{display:block;font-size:11px;color:#6b5a1e}
+.dpage.cover{min-height:520px;position:relative;color:#fff;background:#001c3f}
+.dcov-bg{position:absolute;inset:0;background:var(--bp-portada) center/cover;opacity:.35}
+.dpage.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,28,63,.96) 0%,rgba(0,28,63,.75) 55%,rgba(0,28,63,.35) 100%)}
+.dcov{position:relative;z-index:1;padding:40px 44px;display:flex;flex-direction:column;gap:28px;min-height:520px}
+.dcov .dk{color:#00dcfa}
+.dcov h1{font-size:48px;font-weight:600;line-height:1.05;letter-spacing:-.02em;margin:6px 0 4px}
+.dsub{font-size:18px;color:#c9d6e6;margin:0}
+.dcov .dmsg{background:rgba(255,255,255,.08);color:#fff;border-left-color:#00dcfa;max-width:60ch;margin-top:16px}
+.dcov-t{flex:1}
+.dcov-f{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;border-top:1px solid rgba(255,255,255,.2);padding-top:16px}
+.dcov-f span{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#93a8c2}
+.dcov-f b{font-size:14px;font-weight:600}.dcov-f small{display:block;font-size:12px;color:#c9d6e6}
+.dzm{width:min(1500px,100%);height:min(92vh,100%)}.dzb{padding:12px;background:#f2f5f9;flex:1}.dzb .dsvg{width:auto;height:calc(92vh - 110px);min-height:420px;max-width:none;background:#fff;border-radius:8px}
+.dzb{overflow:auto;display:block!important}
+@container (max-width:720px){
+  .dscroll .dsvg.wide{height:300px}
+  .dph,.dpb,.dpf{padding-left:18px;padding-right:18px}
+  .dpb h2{font-size:22px}.dmsg{font-size:14px!important}
+  .dkpis{grid-template-columns:repeat(2,minmax(0,1fr))}.dkpi b{font-size:20px}
+  .dg2,.dg3{grid-template-columns:1fr}
+  .dstages{grid-template-columns:1fr 1fr}
+  .dcov{padding:26px 20px}.dcov h1{font-size:32px}.dcov-f{grid-template-columns:1fr}
+  .dtab{font-size:11.5px}.dtab.small td:nth-child(3),.dtab.small th:nth-child(3),.dtab.small td:nth-child(6),.dtab.small th:nth-child(6){display:none}
+  .dpf span:first-child{display:none}
+}
+@container (max-width:420px){.dstages{grid-template-columns:1fr}.dkpis{grid-template-columns:1fr 1fr}}
+@media (max-width:1100px){.dwrap{grid-template-columns:1fr}.dcoach{position:static}}
+@media print{
+  body.dprinting>*:not(#dPrintArea){display:none!important}
+  body.dprinting #dPrintArea{display:block}
+  #dPrintArea .dpage{break-after:page;box-shadow:none;border-radius:0;margin:0}
+  #dPrintArea .dzi{display:none}
+  #dPrintArea .dscroll{overflow:visible}#dPrintArea .dsvg,#dPrintArea .dsvg.wide{width:100%!important;height:auto!important}
+  @page{size:A4 landscape;margin:8mm}
+  body.dprinting{background:#fff}
+  * {-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+#dPrintArea{display:none}
 </style>
 </head>
 <body>
@@ -3313,6 +3430,202 @@ var BP = (function () {
     if (e.key === 'Escape' && (C.quick || C.imp || C.newRole || C.freqOther || C.io)) { C.quick = false; C.imp = null; C.newRole = false; C.freqOther = false; C.io = null; BP.render(); return; }
     if ((e.ctrlKey || e.metaKey) && !/INPUT|TEXTAREA|SELECT/.test(el.tagName)) { if (e.key.toLowerCase() === 'z') { e.preventDefault(); E.undo(); } if (e.key.toLowerCase() === 'y') { e.preventDefault(); E.redo(); } }
   });
+})();
+</script>
+<script>/* Blueprint 5.0 · Entregable: asistente "Narrativa Omnicon" con vista previa del documento */
+(function () {
+  'use strict';
+  var esc = BP.esc, ic = BP.ic, $ = BP.$, tag = BP.tag;
+  var S = function () { return BP.S; };
+  var D = { i: 0, zoom: null };
+  var DIM = { act: [132, 104], dec: [136, 88], gw: [56, 56], link: [110, 58], sub: [128, 70], sto: [112, 92], lbl: [140, 40], proc: [170, 88], ext: [170, 70] };
+  var MCOL = { M: '#ff4b2b', MT: '#f5c400', SA: '#b8e000', AU: '#00c853' };
+  BP.onSwitch.push(function () { D.i = 0; D.zoom = null; });
+  function st() { var s = S(); if (!s.deliv) s.deliv = { skip: {}, msg: {} }; return s.deliv; }
+  function usd(n) { return BP.usd(n); }
+  function pct(a, b) { return b ? Math.round(a / b * 100) : 0; }
+  function logo() { var l = document.querySelector('.brand-logo'); return l ? l.src : ''; }
+  function acts() { return Object.keys(S().acts).sort().map(function (k) { return S().acts[k]; }); }
+  function sheets() { BP.E.sheets(); return S().sheets; }
+  function procName() { return S().eng.procName || 'Proceso'; }
+
+  /* ---------- diagramas SVG ---------- */
+  function wrap(t, n, max) { var w = String(t || '').split(/\s+/), L = [], c = ''; w.forEach(function (x) { if ((c + ' ' + x).trim().length > n && c) { L.push(c); c = x; } else c = (c + ' ' + x).trim(); }); if (c) L.push(c); if (L.length > max) { L = L.slice(0, max); L[max - 1] = L[max - 1].replace(/.{0,2}$/, '…'); } return L; }
+  function tspans(lines, x, y, lh) { var y0 = y - (lines.length - 1) * lh / 2; return lines.map(function (l, i) { return '<tspan x="' + x + '" y="' + (y0 + i * lh) + '">' + esc(l) + '</tspan>'; }).join(''); }
+  function route(a, b, e) {
+    var A = DIM[a.t], B = DIM[b.t], aw = A[0] / 2, ah = A[1] / 2, bw = B[0] / 2, bh = B[1] / 2;
+    if (e && (e.fs || e.ts)) {
+      var side = function (n, sd) { var d = DIM[n.t]; return { t: [n.x, n.y - d[1] / 2, 0, -1], b: [n.x, n.y + d[1] / 2, 0, 1], l: [n.x - d[0] / 2, n.y, -1, 0], r: [n.x + d[0] / 2, n.y, 1, 0] }[sd]; };
+      var au = function (p, q) { var dx = q.x - p.x, dy = q.y - p.y; return Math.abs(dx) * DIM[p.t][1] > Math.abs(dy) * DIM[p.t][0] ? (dx > 0 ? 'r' : 'l') : (dy > 0 ? 'b' : 't'); };
+      var P1 = side(a, e.fs || au(a, b)), P2 = side(b, e.ts || au(b, a)), Q1 = [P1[0] + P1[2] * 22, P1[1] + P1[3] * 22], Q2 = [P2[0] + P2[2] * 22, P2[1] + P2[3] * 22], h1 = P1[2] !== 0, h2 = P2[2] !== 0, pts = [[P1[0], P1[1]], Q1];
+      if (h1 && h2) { var mx = (Q1[0] + Q2[0]) / 2; pts.push([mx, Q1[1]], [mx, Q2[1]]); } else if (!h1 && !h2) { var my = (Q1[1] + Q2[1]) / 2; pts.push([Q1[0], my], [Q2[0], my]); } else if (h1) pts.push([Q2[0], Q1[1]]); else pts.push([Q1[0], Q2[1]]);
+      pts.push(Q2, [P2[0], P2[1]]); return { d: 'M' + pts.map(function (p) { return Math.round(p[0]) + ' ' + Math.round(p[1]); }).join(' L'), lx: Q1[0] + 4, ly: Q1[1] - 6 };
+    }
+    var dx = b.x - a.x, dy = b.y - a.y;
+    if (dx > aw + bw + 10) { var sx = a.x + aw, tx = b.x - bw, m2 = Math.round((sx + tx) / 2); return { d: 'M' + sx + ' ' + a.y + ' H' + m2 + ' V' + b.y + ' H' + tx, lx: sx + 6, ly: a.y - 7 }; }
+    if (Math.abs(dx) <= aw + bw + 10) { var sy = dy > 0 ? a.y + ah : a.y - ah, ty = dy > 0 ? b.y - bh : b.y + bh, m3 = Math.round((sy + ty) / 2); return { d: 'M' + a.x + ' ' + sy + ' V' + m3 + ' H' + b.x + ' V' + ty, lx: a.x + 6, ly: sy + (dy > 0 ? 16 : -6) }; }
+    var low = Math.max(a.y + ah, b.y + bh) + 34; return { d: 'M' + a.x + ' ' + (a.y + ah) + ' V' + low + ' H' + b.x + ' V' + (b.y + bh), lx: a.x + 6, ly: a.y + ah + 16 };
+  }
+  function nodeSVG(n) {
+    var d = DIM[n.t] || [120, 60], x = n.x - d[0] / 2, y = n.y - d[1] / 2, a = n.t === 'act' ? S().acts[n.id] : null;
+    if (n.t === 'act' && a) {
+      var tb = a.tool ? '<rect x="' + x + '" y="' + (y + d[1] - 34) + '" width="' + d[0] + '" height="17" fill="#7543ff"/><text x="' + n.x + '" y="' + (y + d[1] - 22) + '" fill="#fff" font-size="10.5" text-anchor="middle">' + esc(wrap(a.tool, 20, 1)[0]) + '</text>' : '';
+      return '<g><rect x="' + x + '" y="' + y + '" width="' + d[0] + '" height="' + d[1] + '" rx="10" fill="#fff" stroke="#001c3f" stroke-width="1.5"/><path d="M' + (x + 10) + ' ' + y + ' H' + (x + d[0] - 10) + ' Q' + (x + d[0]) + ' ' + y + ' ' + (x + d[0]) + ' ' + (y + 10) + ' V' + (y + 18) + ' H' + x + ' V' + (y + 10) + ' Q' + x + ' ' + y + ' ' + (x + 10) + ' ' + y + 'Z" fill="' + MCOL[a.mode] + '"/>' + tb +
+        '<path d="M' + x + ' ' + (y + d[1] - 17) + ' H' + (x + d[0]) + ' V' + (y + d[1] - 10) + ' Q' + (x + d[0]) + ' ' + (y + d[1]) + ' ' + (x + d[0] - 10) + ' ' + (y + d[1]) + ' H' + (x + 10) + ' Q' + x + ' ' + (y + d[1]) + ' ' + x + ' ' + (y + d[1] - 10) + 'Z" fill="#001c3f"/><text x="' + n.x + '" y="' + (y + d[1] - 5) + '" fill="#fff" font-size="11" font-weight="600" text-anchor="middle">' + n.id + '</text>' +
+        '<text font-size="11.5" font-weight="500" fill="#001c3f" text-anchor="middle">' + tspans(wrap(a.name, 18, a.tool ? 3 : 4), n.x, y + 18 + (d[1] - 18 - (a.tool ? 34 : 17)) / 2 + 4, 13) + '</text></g>';
+    }
+    if (n.t === 'dec') return '<g><polygon points="' + n.x + ',' + y + ' ' + (x + d[0]) + ',' + n.y + ' ' + n.x + ',' + (y + d[1]) + ' ' + x + ',' + n.y + '" fill="#001c3f"/><text font-size="10.5" fill="#fff" text-anchor="middle">' + tspans(wrap(n.label, 15, 3), n.x, n.y + 4, 12) + '</text></g>';
+    if (n.t === 'gw') return '<g><rect x="' + (n.x - 16) + '" y="' + (n.y - 16) + '" width="32" height="32" fill="#fff" stroke="#001c3f" stroke-width="2" transform="rotate(45 ' + n.x + ' ' + n.y + ')"/><text x="' + n.x + '" y="' + (n.y + 6) + '" font-size="18" font-weight="600" text-anchor="middle" fill="#001c3f">+</text></g>';
+    if (n.t === 'link') return '<g><rect x="' + x + '" y="' + y + '" width="' + d[0] + '" height="' + d[1] + '" rx="10" fill="#e8f4ff" stroke="#0a58eb" stroke-dasharray="5 4" stroke-width="1.5"/><text font-size="11.5" font-weight="600" fill="#0a4a9e" text-anchor="middle">' + tspans(wrap(n.label + ' ↗', 16, 2), n.x, n.y + 4, 13) + '</text></g>';
+    if (n.t === 'sub') return '<g><rect x="' + x + '" y="' + y + '" width="' + d[0] + '" height="' + d[1] + '" rx="10" fill="#fff" stroke="#001c3f" stroke-width="1.5"/><text font-size="11.5" fill="#001c3f" text-anchor="middle">' + tspans(wrap(n.label, 18, 3), n.x, n.y + 4, 13) + '</text></g>';
+    if (n.t === 'sto') return '<g><polygon points="' + n.x + ',' + y + ' ' + (x + d[0]) + ',' + (y + d[1]) + ' ' + x + ',' + (y + d[1]) + '" fill="#556578"/><text font-size="10" fill="#fff" text-anchor="middle">' + tspans(wrap(n.label, 14, 2), n.x, y + d[1] - 18, 11) + '</text></g>';
+    if (n.t === 'proc') { var on = !!n.letter; return '<g><rect x="' + x + '" y="' + y + '" width="' + d[0] + '" height="' + d[1] + '" rx="12" fill="' + (on ? '#0a58eb' : '#fff') + '" stroke="' + (on ? '#0a58eb' : '#001c3f') + '" stroke-width="1.5"/><text font-size="12.5" font-weight="600" fill="' + (on ? '#fff' : '#001c3f') + '" text-anchor="middle">' + tspans(wrap((on ? n.letter + ' · ' : '') + n.label, 22, 2), n.x, n.y - 2, 14) + '</text><text x="' + n.x + '" y="' + (y + d[1] - 10) + '" font-size="10.5" fill="' + (on ? '#d6e6ff' : '#556578') + '" text-anchor="middle">' + (on ? 'Levantado' : 'Sin levantar') + '</text></g>'; }
+    if (n.t === 'ext') return '<g><rect x="' + x + '" y="' + y + '" width="' + d[0] + '" height="' + d[1] + '" rx="4" fill="#eef2f6" stroke="#556578" stroke-width="1.5"/><text font-size="12.5" font-weight="600" fill="#001c3f" text-anchor="middle">' + tspans(wrap(n.label, 22, 2), n.x, n.y + 4, 14) + '</text></g>';
+    return '<text x="' + n.x + '" y="' + n.y + '" font-size="12" font-weight="600" fill="#001c3f" text-anchor="middle">' + esc(n.label || '') + '</text>';
+  }
+  function diagram(sh, title) {
+    if (!sh || !sh.nodes.length) return '<div class="dempty">Sin diagrama registrado.</div>';
+    var isa0 = sh.kind === 'isa', LN = [['L4', 0, 200, 'Nivel 4 · Planeación y logística'], ['L3', 200, 800, 'Nivel 3 · Operaciones de manufactura'], ['L12', 800, 1080, 'Niveles 1 y 2 · Control']], bands = [];
+    var nodes = sh.nodes.map(function (n) { return Object.assign({}, n); });
+    if (isa0) {
+      var cur = 0; LN.forEach(function (l) {
+        var ins = nodes.filter(function (n) { return n.y >= l[1] && n.y < l[2]; }), lo = Math.min.apply(null, ins.map(function (n) { return n.y - (DIM[n.t] || [0, 60])[1] / 2; })), hi = Math.max.apply(null, ins.map(function (n) { return n.y + (DIM[n.t] || [0, 60])[1] / 2; }));
+        var h = ins.length ? hi - lo + 96 : 64, top = cur; ins.forEach(function (n) { n.y = top + 56 + (n.y - lo); }); bands.push([l[0], top, top + h, l[3]]); cur += h;
+      });
+    }
+    var N = {}; nodes.forEach(function (n) { N[n.id] = n; });
+    var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; nodes.forEach(function (n) { var d = DIM[n.t] || [120, 60]; x0 = Math.min(x0, n.x - d[0] / 2); y0 = Math.min(y0, n.y - d[1] / 2); x1 = Math.max(x1, n.x + d[0] / 2); y1 = Math.max(y1, n.y + d[1] / 2); });
+    var isa = sh.kind === 'isa', pad = 30;
+    if (isa) { x0 = Math.min(x0, 150) - 150; y0 = 0; y1 = bands[bands.length - 1][2]; }
+    else { x0 -= pad; y0 -= pad + 10; } x1 += pad + 20; y1 += isa ? 0 : pad + 20;
+    var W = x1 - x0, H = y1 - y0;
+    var lanes = isa ? bands.map(function (l, i) { return '<rect x="' + x0 + '" y="' + l[1] + '" width="' + W + '" height="' + (l[2] - l[1]) + '" fill="' + (i % 2 ? '#f8fafc' : '#eef3f9') + '"/><line x1="' + x0 + '" y1="' + l[2] + '" x2="' + x1 + '" y2="' + l[2] + '" stroke="#c9d4e1"/><text x="' + (x0 + 14) + '" y="' + (l[1] + 24) + '" font-size="14" font-weight="600" fill="#3d4f66">' + l[3] + '</text>'; }).join('') : '';
+    var ed = sh.edges.map(function (e) { var a = N[e.f], b = N[e.t]; if (!a || !b) return ''; var r = route(a, b, e); return '<path d="' + r.d + '" fill="none" stroke="#556578" stroke-width="1.6" marker-end="url(#dA)"/>' + (e.l ? '<text x="' + r.lx + '" y="' + r.ly + '" font-size="11.5" font-weight="500" fill="#3d4f66" paint-order="stroke" stroke="#fff" stroke-width="4">' + esc(e.l) + '</text>' : ''); }).join('');
+    return '<svg class="dsvg' + (W / H > 2.3 ? ' wide' : '') + '" viewBox="' + x0 + ' ' + y0 + ' ' + W + ' ' + H + '" role="img" aria-label="' + esc(title) + '" font-family="Poppins, Segoe UI, sans-serif" preserveAspectRatio="xMidYMid meet"><defs><marker id="dA" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 Z" fill="#556578"/></marker></defs><rect x="' + x0 + '" y="' + y0 + '" width="' + W + '" height="' + H + '" fill="#fff"/>' + lanes + ed + nodes.map(nodeSVG).join('') + '</svg>';
+  }
+  function fig(svgHTML, cap, key) { var wide = /class="dsvg wide"/.test(svgHTML); return '<figure class="dfig"><div class="dzoom"><div class="dscroll" tabindex="0" aria-label="' + esc(cap) + '">' + svgHTML + '</div><button class="dzi" data-a="dZoom" data-k="' + key + '">' + ic('i-search') + 'Ampliar</button></div><figcaption>' + esc(cap) + (wide ? ' · desliza para recorrerlo o amplíalo' : '') + '</figcaption></figure>'; }
+  function legend() { return '<div class="dleg">' + [['AU', 'Automático'], ['SA', 'Semiautomático'], ['MT', 'Manual + herramienta'], ['M', 'Manual']].map(function (m) { return '<span><i style="background:' + MCOL[m[0]] + '"></i>' + m[1] + '</span>'; }).join('') + '<span><i style="background:#7543ff"></i>Herramienta</span></div>'; }
+
+  /* ---------- indicadores ---------- */
+  function K() {
+    var s = S(), A = acts(), n = A.length, c = function (f) { return A.filter(f).length; };
+    var docs = BP.docCount().slice(0, 5), dbl = A.filter(function (a) { var o = (a.io || []).filter(function (x) { return x.dir === 'out'; }); return o.some(function (x) { return /papel/i.test(x.medium); }) && o.some(function (x) { return /poms|sap|lims|excel|scada|factory|jd/i.test(x.medium); }); });
+    var tot = s.stages.reduce(function (a, z) { return a + z.recorded; }, 0), est = s.ini.reduce(function (a, i) { return a + BP.iniEst(i).v; }, 0), ben = s.ini.reduce(function (a, i) { return a + BP.iniBen(i).h; }, 0);
+    var ch = Object.keys(s.acts).filter(BP.changed), comp = A.reduce(function (x, a) { var cc = BP.completeness(a); return x + cc.ok / cc.n; }, 0) / (n || 1);
+    return { n: n, man: c(function (a) { return a.mode === 'M'; }), mt: c(function (a) { return a.mode === 'MT'; }), sa: c(function (a) { return a.mode === 'SA'; }), au: c(function (a) { return a.mode === 'AU'; }), pap: c(function (a) { return a.paperDoc; }), noTool: c(function (a) { return !a.tool; }), docs: docs, dbl: dbl, tot: tot, est: est, ben: ben, ch: ch, comp: comp };
+  }
+
+  /* ---------- secciones ---------- */
+  var SECS = [
+    { k: 'portada', t: 'Portada', d: 'Cliente, alcance, equipo y versión' },
+    { k: 'contexto', t: 'Contexto y alcance', d: 'Objetivo, value drivers, stakeholders y cadena E2E' },
+    { k: 'proceso', t: 'Proceso actual', d: 'Flujo ISA-95 y mapa físico de nivel 0' },
+    { k: 'hallazgos', t: '¿Qué se encontró?', d: 'Cifras del diagnóstico' },
+    { k: 'pains', t: 'Pain points', d: 'Problemas por categoría y por actividad' },
+    { k: 'reqs', t: 'Requerimientos', d: 'Necesidades, pilares 5.0 y prioridad' },
+    { k: 'roadmap', t: 'Roadmap', d: 'Cuatro etapas e iniciativas' },
+    { k: 'futuro', t: 'Hoy vs Futuro', d: 'Cómo cambia el proceso' },
+    { k: 'estim', t: 'Estimación', d: 'Costo, beneficio y supuestos' },
+    { k: 'anexo', t: 'Anexo · casos de uso', d: 'Ficha resumida de cada actividad' }];
+  function check(k) {
+    var s = S(), x = K(), r = [];
+    if (k === 'portada') { if (!s.eng.client) r.push('Falta el nombre del cliente'); }
+    if (k === 'contexto') { if (!s.eng.drivers.length) r.push('Sin business value drivers'); if (!s.eng.stakeholders.length) r.push('Sin stakeholders'); }
+    if (k === 'proceso') { if (!x.n) r.push('Sin actividades'); var un = sheets().reduce(function (a, sh) { return a + sh.nodes.filter(function (n) { return n.unpl; }).length; }, 0); if (un) r.push(un + ' actividades por ubicar en el flujo'); }
+    if (k === 'hallazgos') { if (!x.n) r.push('Sin actividades'); }
+    if (k === 'pains') { if (!s.pps.length) r.push('Sin pain points'); }
+    if (k === 'reqs') { var nm = s.reqs.filter(function (q) { return !q.moscow; }).length, ns = s.reqs.filter(function (q) { return !q.stage; }).length; if (!s.reqs.length) r.push('Sin requerimientos'); if (nm) r.push(nm + ' sin MoSCoW'); if (ns) r.push(ns + ' sin etapa'); }
+    if (k === 'roadmap') { var z = s.ini.filter(function (i) { return !i.reqs.length; }).length; if (!s.ini.length) r.push('Sin iniciativas'); if (z) r.push(z + ' iniciativas sin requerimiento'); if (!x.tot) r.push('Etapas sin valor estimado'); }
+    if (k === 'futuro') { if (!x.ch.length) r.push('El Futuro no se ha dibujado'); }
+    if (k === 'estim') { var w = s.ini.filter(function (i) { return !i.cost.length; }).length; if (w) r.push(w + ' de ' + s.ini.length + ' iniciativas sin supuestos'); if (!x.ben) r.push('Sin beneficio estimado'); }
+    if (k === 'anexo') { var inc = acts().filter(function (a) { var c = BP.completeness(a); return c.ok < c.n; }).length; if (inc) r.push(inc + ' actividades incompletas'); }
+    return r;
+  }
+  function defMsg(k) {
+    var s = S(), x = K(), top = function () { var c = {}; s.pps.forEach(function (p) { c[p.cat] = (c[p.cat] || 0) + 1; }); var b = Object.keys(c).sort(function (a, b2) { return c[b2] - c[a]; })[0]; return b ? BP.label('cats', b).toLowerCase() : ''; };
+    return {
+      portada: 'Diagnóstico As-Is y propuesta de transformación hacia Industria 5.0 para ' + procName() + '.',
+      contexto: s.eng.drivers.length ? 'El trabajo se orienta a ' + s.eng.drivers.length + ' objetivos de negocio acordados con ' + s.eng.client + '.' : 'Los objetivos de negocio están pendientes de acordar con el cliente.',
+      proceso: x.n + ' actividades levantadas: ' + pct(x.man, x.n) + ' % son totalmente manuales y ' + (x.au ? x.au + ' son automáticas' : 'ninguna es automática') + '.',
+      hallazgos: pct(x.pap, x.n) + ' % de las actividades usa papel' + (x.dbl.length ? ' y ' + x.dbl.length + ' registran el mismo dato en papel y en un sistema' : '') + '.',
+      pains: s.pps.length + ' pain points; la mayoría corresponde a ' + top() + '.',
+      reqs: s.reqs.length + ' necesidades priorizadas con MoSCoW y alineadas a los pilares de Industria 5.0.',
+      roadmap: 'Cuatro etapas en orden: primero la base de infraestructura y datos, después la inteligencia operacional.',
+      futuro: x.ch.length ? x.ch.length + ' actividades cambian en el Futuro, cada una con la iniciativa que lo hace posible.' : 'El estado Futuro está pendiente de dibujar.',
+      estim: 'Estimación de consultoría de ' + usd(x.tot) + (x.ben ? ', con ' + Math.round(x.ben) + ' horas al mes liberadas' : '') + '. No es una cotización.',
+      anexo: 'Ficha resumida de cada actividad del levantamiento.' }[k];
+  }
+
+  /* ---------- páginas ---------- */
+  function page(k, idx, total, body) {
+    var s = S(), v = s.versions[s.versions.length - 1], sec = SECS.filter(function (x) { return x.k === k; })[0], msg = st().msg[k] != null ? st().msg[k] : defMsg(k);
+    if (k === 'portada') return '<article class="dpage cover"><div class="dcov-bg"></div><div class="dcov"><img class="dlogo" src="' + logo() + '" alt="Omnicon"><div class="dcov-t"><span class="dk">Consultoría de transformación digital · Industria 5.0</span><h1>' + esc(s.eng.client) + '</h1><p class="dsub">' + esc(procName()) + ' · Del piso de planta al roadmap</p><p class="dmsg">' + esc(msg) + '</p></div>' + body + '</div></article>';
+    return '<article class="dpage"><header class="dph"><img class="dlogo sm" src="' + logo() + '" alt="Omnicon"><span>' + esc(s.eng.client) + ' · ' + esc(procName()) + '</span><span class="dpn">' + String(idx).padStart(2, '0') + '</span></header><div class="dpb"><span class="dk">' + esc(sec.d) + '</span><h2>' + esc(sec.t) + '</h2>' + (msg ? '<p class="dmsg">' + esc(msg) + '</p>' : '') + body + '</div><footer class="dpf"><span>Omnicon · Blueprint 5.0 · DT Enabler</span><span>Rev ' + v.rev + ' · ' + esc(v.status) + '</span><span>' + idx + ' / ' + total + '</span></footer></article>';
+  }
+  function kpi(v, l, s2) { return '<div class="dkpi"><b>' + v + '</b><span>' + l + '</span>' + (s2 ? '<small>' + s2 + '</small>' : '') + '</div>'; }
+  function bar(l, n, t, col) { return '<div class="dbar"><span>' + esc(l) + '</span><i><em style="width:' + pct(n, t) + '%;background:' + (col || '#0a58eb') + '"></em></i><b>' + n + '</b></div>'; }
+  function body(k) {
+    var s = S(), x = K(), A = acts(), v = s.versions[s.versions.length - 1];
+    if (k === 'portada') return '<div class="dcov-f"><div><span>Versión</span><b>Rev ' + v.rev + ' · ' + esc(v.status) + '</b><small>' + esc(v.date) + '</small></div><div><span>Equipo Omnicon</span><b>' + esc(s.eng.team.map(function (t) { return t.split(' · ')[0]; }).join(' · ')) + '</b></div><div><span>Aprobación del cliente</span><b>' + (s.eng.approval ? esc(s.eng.approval.name) + ' · ' + esc(s.eng.approval.date) : 'Pendiente') + '</b></div></div>';
+    if (k === 'contexto') { var e2 = s.e2e; return '<div class="dg2"><div><h3>Objetivo</h3><p>' + esc(s.eng.desc) + '</p><h3>Business value drivers</h3>' + (s.eng.drivers.length ? '<ul class="dlist">' + s.eng.drivers.map(function (d) { return '<li>' + esc(d) + '</li>'; }).join('') + '</ul>' : '<p class="dmut">Pendientes de definir.</p>') + '</div><div><h3>Stakeholders</h3><table class="dtab"><thead><tr><th>Nombre</th><th>Rol</th><th>RACI</th></tr></thead><tbody>' + s.eng.stakeholders.map(function (z) { return '<tr><td>' + esc(z.name) + '</td><td>' + esc(z.role) + '</td><td>' + esc(z.raci) + '</td></tr>'; }).join('') + '</tbody></table><h3>Equipo Omnicon</h3><p>' + s.eng.team.map(esc).join('<br>') + '</p></div></div>' + (e2 ? fig(diagram(e2, 'Cadena E2E'), 'Cadena de valor E2E · el proceso levantado aparece resaltado', 'e2e') : ''); }
+    if (k === 'proceso') { var SH = sheets(), isa = SH.filter(function (z) { return z.kind === 'isa'; })[0], l0 = SH.filter(function (z) { return z.kind === 'free'; })[0]; return '<div class="dkpis">' + kpi(x.n, 'Actividades') + kpi(A.filter(function (a) { return a.isa === 'L3'; }).length, 'En operaciones (nivel 3)') + kpi(A.filter(function (a) { return a.isa === 'L12'; }).length, 'En control (niveles 1-2)') + kpi(A.filter(function (a) { return a.isa === 'L4'; }).length, 'En planeación (nivel 4)') + '</div>' + fig(diagram(isa, 'Flujo ISA-95'), 'Flujo del proceso por niveles ISA-95 · ' + esc(procName()), 'isa') + legend() + (l0 && l0.nodes.length ? fig(diagram(l0, 'Mapa físico'), 'Movimiento físico del material (nivel 0)', 'l0') : ''); }
+    if (k === 'hallazgos') return '<div class="dkpis">' + kpi(x.n, 'Actividades levantadas') + kpi(pct(x.man, x.n) + ' %', 'Totalmente manuales', x.man + ' de ' + x.n) + kpi(pct(x.pap, x.n) + ' %', 'Usan documentos en papel', x.pap + ' de ' + x.n) + kpi(x.au, 'Totalmente automáticas', x.au ? '' : 'Oportunidad clave') + '</div><div class="dg2"><div><h3>Modo de ejecución</h3>' + bar('Manual', x.man, x.n, MCOL.M) + bar('Manual + herramienta', x.mt, x.n, MCOL.MT) + bar('Semiautomático', x.sa, x.n, MCOL.SA) + bar('Automático', x.au, x.n, MCOL.AU) + '<h3>Herramientas</h3><p>' + x.noTool + ' de ' + x.n + ' actividades se hacen sin ninguna herramienta tecnológica.</p></div><div><h3>Documentos que más se repiten</h3>' + x.docs.map(function (d) { return bar(d[0].replace(/ - \(/, ' (').slice(0, 46), d[1], x.docs[0][1], '#001c3f'); }).join('') + (x.dbl.length ? '<div class="dcall"><b>Doble digitación</b><span>' + x.dbl.length + ' actividades dejan el mismo dato en papel y en un sistema: ' + x.dbl.map(function (a) { return a.id; }).join(', ') + '.</span></div>' : '') + '</div></div>';
+    if (k === 'pains') { var by = {}; s.pps.forEach(function (p) { by[p.act] = (by[p.act] || 0) + 1; }); var top = Object.keys(by).sort(function (a, b) { return by[b] - by[a]; }).slice(0, 5); return '<div class="dg3">' + s.cfg.cats.map(function (c) { var n2 = s.pps.filter(function (p) { return p.cat === c[0]; }).length; return '<div class="dcat"><b>' + n2 + '</b><span>' + esc(c[1]) + '</span><small>' + pct(n2, s.pps.length) + ' %</small></div>'; }).join('') + '</div><h3>Actividades con más pain points</h3><div class="dpp">' + top.map(function (a) { var p = s.pps.filter(function (z) { return z.act === a; }); return '<div class="dppc"><span class="did">' + a + '</span><div><b>' + esc(s.acts[a] ? s.acts[a].name : a) + '</b><p>' + esc(p[0].text) + (p.length > 1 ? ' <em>(+' + (p.length - 1) + ' más)</em>' : '') + '</p></div></div>'; }).join('') + '</div>'; }
+    if (k === 'reqs') { var MO = { Must: 'Must', Should: 'Should', Could: 'Could', Wont: "Won't", '': 'Sin priorizar' }; var pil = s.cfg.pillars.map(function (p) { return [p[1], s.reqs.filter(function (r) { return r.pillars.indexOf(p[0]) >= 0; }).length]; }); return '<div class="dg2"><div><h3>Por prioridad (MoSCoW)</h3>' + ['Must', 'Should', 'Could', 'Wont', ''].map(function (m) { var n3 = s.reqs.filter(function (r) { return (r.moscow || '') === m; }).length; return n3 ? bar(MO[m], n3, s.reqs.length, m === 'Must' ? '#b0353c' : m === 'Should' ? '#e3a008' : m === 'Could' ? '#0a58eb' : '#9aa8b8') : ''; }).join('') + '<h3>Pilares Industria 5.0</h3>' + pil.map(function (p) { return bar(p[0], p[1], s.reqs.length, '#7543ff'); }).join('') + '</div><div><h3>Necesidades principales</h3><table class="dtab"><thead><tr><th>Requerimiento</th><th>Prioridad</th><th>Etapa</th></tr></thead><tbody>' + s.reqs.slice().sort(function (a, b) { var o = { Must: 0, Should: 1, Could: 2, Wont: 3, '': 4 }; return o[a.moscow || ''] - o[b.moscow || '']; }).slice(0, 7).map(function (r) { return '<tr><td>' + esc(r.text.length > 90 ? r.text.slice(0, 88) + '…' : r.text) + '</td><td>' + esc(MO[r.moscow || '']) + '</td><td>' + (r.stage ? r.stage : '—') + '</td></tr>'; }).join('') + '</tbody></table></div></div>'; }
+    if (k === 'roadmap') { var cols = ['#001c3f', '#0a58eb', '#00b8d4', '#7543ff']; return '<div class="dstages">' + s.stages.map(function (z, i) { var L = s.ini.filter(function (q) { return q.stage === z.n; }); return '<div class="dstage" style="--c:' + cols[i] + '"><span class="dk">Etapa ' + z.n + ' · ' + esc(z.lvl) + '</span><b>' + esc(z.name) + '</b><span class="damt">' + usd(z.recorded) + '</span><ul>' + L.slice(0, 5).map(function (q) { return '<li>' + esc(q.name) + '</li>'; }).join('') + (L.length > 5 ? '<li class="dmut">+ ' + (L.length - 5) + ' más</li>' : '') + (L.length ? '' : '<li class="dmut">Sin iniciativas</li>') + '</ul></div>'; }).join('') + '</div><p class="dnote">Cada etapa depende de la anterior: no se llega a 5.0 sin consolidar la automatización (3.0) y la digitalización de los datos (4.0).</p>'; }
+    if (k === 'futuro') { if (!x.ch.length) return '<div class="dempty">El estado Futuro todavía no se ha dibujado en Blueprint. Se completa en Procesos › Flujo › Futuro.</div>'; var hm = function (fu) { return A.reduce(function (t, a) { var f = fu ? BP.fut(a.id) : a; if (fu && f.removed) return t; var h = BP.hoursMonth(a, f.dur); return t + (h || 0); }, 0); }; return '<div class="dkpis">' + kpi(x.man + ' → ' + A.filter(function (a) { var f = BP.fut(a.id); return f.mode === 'M' && !f.removed; }).length, 'Actividades manuales') + kpi(x.pap + ' → ' + A.filter(function (a) { var f = BP.fut(a.id); return f.paperDoc && !f.removed; }).length, 'Actividades con papel') + kpi(Math.round(hm(false)) + ' → ' + Math.round(hm(true)) + ' h', 'Horas al mes') + kpi(x.ch.length, 'Actividades que cambian') + '</div><table class="dtab"><thead><tr><th>Actividad</th><th>Hoy</th><th>Futuro</th><th>Lo hace posible</th></tr></thead><tbody>' + x.ch.map(function (id) { var a = s.acts[id], f = BP.fut(id); return '<tr><td><b>' + id + '</b> ' + esc(a.name) + '</td><td><i class="dm" style="background:' + MCOL[a.mode] + '"></i>' + esc(BP.MODES[a.mode]) + (a.paperDoc ? ' · papel' : '') + '</td><td>' + (f.removed ? 'Se elimina' : '<i class="dm" style="background:' + MCOL[f.mode] + '"></i>' + esc(BP.MODES[f.mode]) + (f.paperDoc ? ' · papel' : ' · sin papel')) + '</td><td>' + esc(f.ini.map(function (i) { var q = s.ini.filter(function (z) { return z.id === i; })[0]; return q ? q.name : i; }).join(' · ') || '—') + '</td></tr>'; }).join('') + '</tbody></table>'; }
+    if (k === 'estim') { var lines = []; s.ini.forEach(function (q) { q.cost.forEach(function (l) { if (l.sup) lines.push([q.name, l]); }); }); return '<div class="dkpis">' + kpi(usd(x.tot), 'Estimación propuesta') + kpi(usd(x.est), 'Desglosado con supuestos') + kpi(Math.round(x.ben) + ' h', 'Horas al mes liberadas') + kpi(s.ini.filter(function (q) { return q.cost.length; }).length + ' de ' + s.ini.length, 'Iniciativas con supuestos') + '</div><div class="dg2"><div><h3>Por etapa</h3><table class="dtab"><thead><tr><th>Etapa</th><th class="r">Valor</th><th class="r">%</th></tr></thead><tbody>' + s.stages.map(function (z) { return '<tr><td>' + z.n + ' · ' + esc(z.name) + '</td><td class="r">' + usd(z.recorded) + '</td><td class="r">' + pct(z.recorded, x.tot) + ' %</td></tr>'; }).join('') + '<tr class="tot"><td>Total</td><td class="r">' + usd(x.tot) + '</td><td class="r">100 %</td></tr></tbody></table></div><div><h3>Supuestos principales</h3>' + (lines.length ? '<ul class="dsup">' + lines.slice(0, 6).map(function (z) { return '<li><b>' + esc(z[1].what || z[0]) + '</b> · ' + esc(z[1].sup) + '<small>' + esc(z[0]) + ' · confianza ' + esc(z[1].conf || 'sin definir') + '</small></li>'; }).join('') + '</ul>' : '<p class="dmut">Aún no hay supuestos registrados por iniciativa: el valor viene de la propuesta por etapa.</p>') + '</div></div><p class="dnote">Estimación de consultoría con rangos según la confianza de cada supuesto. No es una cotización formal.</p>'; }
+    if (k === 'anexo') return '<table class="dtab small"><thead><tr><th>ID</th><th>Actividad</th><th>Rol</th><th>Modo</th><th>Herramienta</th><th>Frecuencia</th><th class="r">Min</th></tr></thead><tbody>' + A.map(function (a) { return '<tr><td><b>' + a.id + '</b></td><td>' + esc(a.name) + '</td><td>' + esc(a.actor || '—') + '</td><td><i class="dm" style="background:' + MCOL[a.mode] + '"></i>' + esc(BP.MODES[a.mode]) + '</td><td>' + esc(a.tool || '—') + '</td><td>' + esc(a.freq || '—') + '</td><td class="r">' + (a.dur != null && a.dur !== '' ? a.dur : '—') + '</td></tr>'; }).join('') + '</tbody></table>';
+    return '';
+  }
+
+  /* ---------- vista ---------- */
+  function included() { return SECS.filter(function (x) { return !st().skip[x.k]; }); }
+  BP.M.entregable = {
+    render: function () {
+      var s = S(), v = s.versions[s.versions.length - 1], sec = SECS[D.i], inc = included(), idx = inc.indexOf(sec) + 1, ready = SECS.filter(function (x) { return !check(x.k).length; }).length, chg = BP.diffSince(v).length, E = BP.can('edit'), skip = !!st().skip[sec.k];
+      var steps = '<nav class="dstepper" aria-label="Narrativa Omnicon">' + SECS.map(function (x, i) { var c = check(x.k), sk = !!st().skip[x.k], state = sk ? 'off' : c.length ? 'revisar' : 'listo'; return '<button class="dst ' + state + (i === D.i ? ' on' : '') + '" data-a="dGo" data-i="' + i + '"' + (i === D.i ? ' aria-current="step"' : '') + '><span class="n"><span class="dot">' + (state === 'listo' ? '✓' : i + 1) + '</span>' + esc(x.t) + '</span><span class="s">' + (sk ? 'No se incluye' : c.length ? 'Revisar' : 'Listo') + '</span></button>'; }).join('') + '</nav>';
+      var c = check(sec.k);
+      var coach = '<aside class="dcoach"><span class="dk">Paso ' + (D.i + 1) + ' de ' + SECS.length + '</span><h3>' + esc(sec.t) + '</h3><p class="sm mut">' + esc(sec.d) + '.</p>' +
+        (c.length ? '<div class="dchk warn"><b>Para revisar</b><ul>' + c.map(function (z) { return '<li>' + esc(z) + '</li>'; }).join('') + '</ul></div>' : '<div class="dchk ok"><b>✓ Listo para entregar</b><span>Los datos de esta sección están completos.</span></div>') +
+        '<label class="f">Mensaje clave de la sección<textarea class="inp" data-dmsg="' + sec.k + '"' + (E ? '' : ' disabled') + ' rows="4">' + esc(st().msg[sec.k] != null ? st().msg[sec.k] : defMsg(sec.k)) + '</textarea></label>' + (E && st().msg[sec.k] != null ? '<button class="lnk2" data-a="dMsgReset">Volver al mensaje sugerido</button>' : '') +
+        (sec.k !== 'portada' && E ? '<label class="row sm" style="gap:8px"><input type="checkbox" data-dskip="' + sec.k + '"' + (skip ? '' : ' checked') + '> Incluir esta sección en el entregable</label>' : '') +
+        '<p class="sm mut">Las cifras y diagramas salen de los datos del engagement: si cambias algo en Procesos, Requerimientos o Roadmap, esta vista se actualiza sola.</p></aside>';
+      var foot = '<div class="dfoot"><button class="b" data-a="dGo" data-i="' + Math.max(0, D.i - 1) + '"' + (D.i ? '' : ' disabled') + '>← Anterior</button><span class="sm mut">' + (skip ? 'Esta sección no se incluye' : 'Página ' + idx + ' de ' + inc.length) + '</span>' + (D.i < SECS.length - 1 ? '<button class="b pri" data-a="dGo" data-i="' + (D.i + 1) + '">Siguiente: ' + esc(SECS[D.i + 1].t) + ' →</button>' : '<button class="b vio" data-go="versiones">Congelar como nueva versión →</button>') + '</div>';
+      return '<section class="hello"><div><h1>Entregable</h1><p>Narrativa Omnicon, paso a paso. Cada sección se arma con los datos del engagement; revisa, ajusta el mensaje clave y avanza.</p></div><div class="row">' + tag('Rev ' + v.rev + ' · ' + v.status, v.status === 'Approved' ? 'ok' : v.status === 'Delivered' ? 'vio' : '') + tag(ready + ' de ' + SECS.length + ' secciones listas', ready === SECS.length ? 'ok' : 'warn') + '<button class="b sm" data-a="dPrint">' + ic('i-doc') + 'Imprimir o guardar PDF</button></div></section>' +
+        (chg ? '<div class="avn"><div class="avn-h">' + ic('i-alert') + '<span><b>' + chg + ' cambios desde la Rev ' + v.rev + '.</b> La vista previa ya los incluye; el cliente seguirá viendo la Rev ' + v.rev + ' hasta que se congele una nueva versión.</span></div></div>' : '') +
+        steps + '<div class="dwrap"><div class="dprev' + (skip ? ' skipped' : '') + '">' + page(sec.k, idx || '—', inc.length, body(sec.k)) + '</div>' + coach + '</div>' + foot + zoomModal();
+    },
+    after: function () { var on = document.querySelector('.dst.on'); if (on) on.scrollIntoView({ block: 'nearest', inline: 'center' }); }
+  };
+  function zoomModal() {
+    if (!D.zoom) return ''; var SH = sheets(), sh = D.zoom === 'e2e' ? S().e2e : D.zoom === 'isa' ? SH.filter(function (z) { return z.kind === 'isa'; })[0] : SH.filter(function (z) { return z.kind === 'free'; })[0];
+    return '<div class="mbg" data-a="dZoomNo" data-self="1"><div class="mdl dzm" role="dialog" aria-modal="true" aria-label="Diagrama ampliado"><div class="mh"><h2>' + ({ e2e: 'Cadena E2E', isa: 'Flujo ISA-95', l0: 'Mapa físico (nivel 0)' }[D.zoom]) + '</h2><button class="x" data-a="dZoomNo" aria-label="Cerrar">' + ic('i-x') + '</button></div><div class="mb dzb">' + diagram(sh, 'Diagrama') + '</div></div></div>';
+  }
+  function printAll() {
+    var inc = included(), html = inc.map(function (x, i) { return page(x.k, i + 1, inc.length, body(x.k)); }).join('');
+    var w = document.getElementById('dPrintArea'); if (!w) { w = document.createElement('div'); w.id = 'dPrintArea'; document.body.appendChild(w); }
+    w.innerHTML = html; document.body.classList.add('dprinting');
+    var done = function () { document.body.classList.remove('dprinting'); w.innerHTML = ''; window.removeEventListener('afterprint', done); };
+    window.addEventListener('afterprint', done);
+    try { window.print(); } catch (e) { done(); BP.toast('La impresión no está disponible en esta vista'); }
+    setTimeout(function () { if (document.body.classList.contains('dprinting') && !window.matchMedia('print').matches) done(); }, 1500);
+  }
+  function A6(a, b, e) {
+    switch (a) {
+      case 'dGo': D.i = +b.dataset.i; BP.render(); var m = $('main'); if (m) m.scrollTop = 0; return true;
+      case 'dZoom': D.zoom = b.dataset.k; BP.render(); return true;
+      case 'dZoomNo': if (b.dataset.self && e && e.target !== b) return false; D.zoom = null; BP.render(); return true;
+      case 'dMsgReset': delete st().msg[SECS[D.i].k]; BP.render(); return true;
+      case 'dPrint': printAll(); return true;
+    }
+    return false;
+  }
+  var prevA = BP.A1; BP.A1 = function (a, b, e) { return (BP.mod === 'entregable' && A6(a, b, e)) || prevA(a, b, e); };
+  var main = $('main');
+  main.addEventListener('input', function (e) { var t = e.target; if (t.dataset && t.dataset.dmsg && BP.can('edit')) { st().msg[t.dataset.dmsg] = t.value; var p = document.querySelector('.dprev .dmsg'); if (p) p.textContent = t.value; } });
+  main.addEventListener('change', function (e) { var t = e.target; if (t.dataset && t.dataset.dskip && BP.can('edit')) { st().skip[t.dataset.dskip] = !t.checked; BP.render(); } });
+  main.addEventListener('keydown', function (e) { if (BP.mod === 'entregable' && e.key === 'Escape' && D.zoom) { D.zoom = null; BP.render(); } });
 })();
 </script>
 </body>
