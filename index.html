@@ -1350,6 +1350,86 @@ table.xt tr.addrow .cin{outline:1px dashed var(--muted)}
 .side-collapsed .jn-ln{left:50%;margin-left:-.75px;top:29px}
 .jn-subs button[aria-current="page"]::before,.jn-st>button[aria-current]::before{display:none!important}
 .jn-ln,.jn-st.ok .jn-ln,.jn-st.wa .jn-ln{background:rgba(201,214,230,.18)!important}
+/* ===== Constructor · lista agrupada y wizard por actividad ===== */
+.cgrp2{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:8px;margin:10px 10px 4px;padding:8px 12px;border-radius:10px;background:var(--navy);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.cgrp2 b{font-size:11px;padding:1px 8px;border-radius:999px;background:rgba(255,255,255,.16)}
+.crow{display:grid;grid-template-columns:10px 40px minmax(0,1fr) 22px 40px;gap:10px;align-items:center;width:calc(100% - 20px);margin:0 10px;padding:10px 10px;border-radius:10px;border:0;border-bottom:1px solid var(--line-2);text-align:left;color:var(--ink)}
+.crow:hover{background:var(--surface-2)}
+.crow.on{background:var(--info-bg);box-shadow:inset 3px 0 0 var(--bright)}
+.cmode{width:10px;height:10px;border-radius:3px}
+.cid2{font-size:12px;font-weight:600;color:var(--muted)}
+.cnm2{font-size:13px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cnm2 .sg{font-style:normal;color:var(--approval);font-size:12px}
+.cpp{width:22px;height:22px;border-radius:50%;background:#d64545;color:#fff;font-size:11px;font-weight:600;display:inline-flex;align-items:center;justify-content:center}
+.cpp0{width:22px}
+.crow .cbar{width:40px}
+.whead{background:var(--navy);color:#fff;border-radius:16px;padding:16px 20px;display:flex;flex-direction:column;gap:6px}
+.wk{display:flex;gap:8px;font-size:12px;color:#93c7ff;font-weight:500}
+.wname{font:inherit;font-size:22px;font-weight:600;line-height:1.3;color:#fff;background:transparent;border:0;border-bottom:1px dashed rgba(255,255,255,.35);padding:2px 0;resize:none;overflow:hidden;width:100%}
+.wname:focus{outline:none;border-bottom:2px solid #00dcfa}
+.wflow{font-size:12px;color:#b8c8dc}
+.lnk3{color:#00dcfa;font-size:12px;padding:0}
+.lnk3:hover{text-decoration:underline}
+.wst{list-style:none;margin:4px 0 0;padding:0;display:grid;grid-template-columns:repeat(9,minmax(0,1fr))}
+.wst li{position:relative;display:flex;justify-content:center}
+.wst li:not(:first-child)::before{content:"";position:absolute;top:15px;right:50%;width:100%;height:2px;background:var(--line);z-index:0}
+.wst button{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:5px;width:100%;padding:0 2px;color:var(--muted);min-height:44px}
+.wst .c{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;background:var(--surface);border:2px solid #c9d4e1;color:#6b7a8c}
+.wst .t{font-size:11.5px;line-height:1.2;text-align:center}
+.wst li.ok .c{background:var(--cyan);border-color:var(--cyan);color:var(--navy)}
+.wst li.ok .t{color:var(--ink)}
+.wst li.on .c{box-shadow:0 0 0 3px var(--bg,#f2f5f9),0 0 0 5px var(--bright)}
+.wst li.on .t{color:var(--ink);font-weight:600}
+.wst button:hover .c{border-color:var(--bright)}
+.wbody{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.wq h3{font-size:18px;font-weight:600;line-height:1.3}
+.wq p{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.5}
+.wchips{display:flex;flex-wrap:wrap;gap:8px}
+.ch.add{border-style:dashed;color:var(--bright)}
+.wsub{display:flex;flex-direction:column;gap:8px}
+.wopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.wopt{display:flex;flex-direction:column;gap:4px;text-align:left;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.wopt b{font-size:14px;font-weight:600}.wopt small{font-size:12px;color:var(--muted)}
+.wopt:hover:not(:disabled){border-color:var(--bright)}
+.wopt.on{border-color:var(--bright);background:var(--info-bg);box-shadow:inset 0 0 0 1px var(--bright)}
+.wtime{display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px}
+.wtime .f{max-width:170px}.wtime .inp{font-size:18px;min-height:46px}
+.wx{font-size:20px;color:var(--muted);padding-bottom:10px}
+.wres{display:flex;flex-direction:column;padding:6px 16px;border-radius:12px;background:var(--surface-2);min-width:110px}
+.wres b{font-size:24px;font-weight:600}.wres small{font-size:12px;color:var(--muted)}
+.wio{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.wsug{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:var(--approval-soft);color:#3b2a7a;font-size:13px}
+.wsug>.ic{color:var(--approval);fill:currentColor}
+.wsend{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-radius:12px}
+.wsend.ok{background:var(--ok-bg);color:var(--ok-ink)}.wsend.warn{background:var(--warn-bg);color:var(--warn-ink)}
+.wsend b{font-weight:600;font-size:13.5px;display:block}.wsend small{font-size:11.5px;opacity:.85}
+.wfoot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:4px 0 20px}
+.cback{display:none;align-self:flex-start}
+@media (max-width:900px){
+  .cbody{flex-direction:column}
+  .cbody:not(.det) .ced{display:none}
+  .cbody.det .clist{display:none}
+  .cbody .clist{flex:1 1 auto;max-height:none;border-right:0}
+  .cback{display:inline-flex}
+  .ced{padding:12px 12px 30px}
+  .whead{border-radius:12px;padding:12px 14px}.wname{font-size:18px}
+  .wst .t{display:none}.wst .c{width:26px;height:26px;font-size:12px}.wst li:not(:first-child)::before{top:13px}
+  .wbody{padding:16px 14px;border-radius:12px}.wq h3{font-size:16px}
+  .wfoot .sm{display:none}
+}
+.wsugbar{display:flex;align-items:center;gap:10px;width:100%;padding:10px 14px;border-radius:12px;background:var(--approval-soft);border:1px solid #d9ccff;color:#3b2a7a;font-size:13px;text-align:left;min-height:44px}
+.wsugbar .ic{color:var(--approval);fill:currentColor;flex:none}
+.wsugbar>span:last-child{color:var(--approval);font-weight:600}
+@media (max-width:900px){
+  .main.flush{overflow:auto}
+  .main.flush .main-in{height:auto;min-height:100%}
+  .main.flush .pv{height:auto;flex:none}
+  .cbody{overflow:visible!important;height:auto}
+  .clist .cscroll{overflow:visible}
+  .ced{overflow:visible}
+  .pv-bar .seg{max-width:100%;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+  .pv-bar .seg button{white-space:nowrap}
+}
 </style>
 </head>
 <body>
@@ -3334,8 +3414,8 @@ var BP = (function () {
 
   /* ---------- constructor ---------- */
   function listRow(a) {
-    var c = completeness(a), sel = a.id === C.sel, pp = BP.actPPs(a.id).length, sg = sugFor(a.id).length, col = c.ok === c.n ? 'var(--ok-ink)' : c.ok >= 7 ? '#e3a008' : 'var(--err)';
-    return '<button class="crow' + (sel ? ' on' : '') + '" data-a="cSel" data-id="' + a.id + '"><span class="cid"><i style="background:var(--m-' + a.mode + ')"></i>' + a.id + '</span><span class="cnm"><b>' + esc(a.name) + '</b><small>' + esc(a.actor || 'Sin rol') + '</small></span><span class="cfl">' + (pp ? '<em class="pp">' + pp + ' PP</em>' : '') + (sg ? '<em class="sg" title="Sugerencias de omnIA">★</em>' : '') + '<span class="cbar" title="' + c.ok + ' de ' + c.n + '"><i style="width:' + Math.round(c.ok / c.n * 100) + '%;background:' + col + '"></i></span></span></button>';
+    var c = completeness(a), sel = a.id === C.sel, pp = BP.actPPs(a.id).length, sg = sugFor(a.id).length, done = c.ok === c.n;
+    return '<button class="crow' + (sel ? ' on' : '') + '" data-a="cSel" data-id="' + a.id + '" aria-label="' + a.id + ' ' + esc(a.name) + ', ' + c.ok + ' de ' + c.n + ' campos' + (pp ? ', ' + pp + ' pain points' : '') + '"><i class="cmode" style="background:var(--m-' + a.mode + ')" title="' + esc(BP.MODES[a.mode]) + '"></i><b class="cid2">' + a.id + '</b><span class="cnm2">' + esc(a.name) + (sg ? ' <em class="sg" title="Sugerencias de omnIA">★</em>' : '') + '</span>' + (pp ? '<span class="cpp" title="' + pp + ' pain points">' + pp + '</span>' : '<span class="cpp0"></span>') + '<span class="cbar" title="' + c.ok + ' de ' + c.n + ' campos"><i style="width:' + Math.round(c.ok / c.n * 100) + '%;background:' + (done ? 'var(--cyan)' : '#f5b72e') + '"></i></span></button>';
   }
   function list() {
     var q = C.q.toLowerCase(), all = procActs(), L = all.filter(function (a) {
@@ -3346,7 +3426,7 @@ var BP = (function () {
     var groups = [['L4', 'Nivel 4 · Business planning'], ['L3', 'Nivel 3 · Manufacturing operations'], ['L12', 'Niveles 1 y 2 · Control']];
     return '<aside class="clist" aria-label="Actividades"><div class="chead"><input class="inp" data-cq="1" placeholder="Buscar actividad, rol o documento" value="' + esc(C.q) + '"><div class="row" style="gap:6px">' + [['all', 'Todas · ' + all.length], ['inc', 'Incompletas · ' + inc], ['sug', 'Con sugerencias · ' + all.filter(function (a) { return sugFor(a.id).length; }).length]].map(function (x) { return '<button class="h-chip" data-a="cF" data-v="' + x[0] + '" aria-pressed="' + (C.f === x[0]) + '">' + x[1] + '</button>'; }).join('') +
       '<select class="inp" data-crole="1" style="width:auto;min-height:30px;font-size:12px;padding:3px 8px"><option value="">Todos los roles</option>' + S().cat.roles.map(function (r) { return '<option' + (C.role === r ? ' selected' : '') + '>' + esc(r) + '</option>'; }).join('') + '</select></div>' + (noT ? '<p class="sm mut" style="margin:0">' + noT + ' de ' + all.length + ' actividades no tienen <b>tiempo</b>: sin él no se calcula el beneficio.</p>' : '') + '</div><div class="cscroll">' +
-      groups.map(function (g) { var G = L.filter(function (a) { return a.isa === g[0]; }); return G.length ? '<div class="cgrp">' + g[1] + ' · ' + G.length + '</div>' + G.map(listRow).join('') : ''; }).join('') + (L.length ? '' : '<p class="sm mut" style="padding:16px">' + (all.length ? 'Ninguna actividad con este filtro.' : 'Este proceso aún no tiene actividades. Escribe la primera abajo o usa Captura rápida.') + '</p>') + '</div>' +
+      groups.map(function (g) { var G = L.filter(function (a) { return a.isa === g[0]; }); return G.length ? '<div class="cgrp2"><span>' + g[1] + '</span><b>' + G.length + '</b></div>' + G.map(listRow).join('') : ''; }).join('') + (L.length ? '' : '<p class="sm mut" style="padding:16px">' + (all.length ? 'Ninguna actividad con este filtro.' : 'Este proceso aún no tiene actividades. Escribe la primera abajo o usa Captura rápida.') + '</p>') + '</div>' +
       (BP.can('edit') ? '<div class="cadd"><input class="inp" data-cnew="1" placeholder="+ Nueva actividad (verbo + objeto) · Enter"></div>' : '') + '</aside>';
   }
   function sec(n, title, miss, body) { return '<section class="csec"><div class="csh"><span class="n">' + n + '</span><b>' + title + '</b>' + (miss === true ? '<span class="cok">✓ Completo</span>' : miss ? '<span class="cmiss">Falta: ' + esc(miss) + '</span>' : '') + '</div>' + body + '</section>'; }
@@ -3360,44 +3440,51 @@ var BP = (function () {
     }
     return '<div class="iocard"><div class="row" style="gap:6px">' + tag(k[0], k[1]) + '<b>' + esc(x.doc || x.medium) + '</b>' + (ed ? '<span class="sp"></span><button class="x" data-a="ioEdit" data-i="' + i + '" aria-label="Editar">' + ic('i-edit') + '</button>' : '') + '</div>' + (x.doc ? '<span class="sm mut">' + esc(x.medium) + '</span>' : '') + (x.fields.length ? '<span class="sm">Campos: ' + x.fields.map(esc).join(' · ') + '</span>' : '<span class="sm mut">Sin campos registrados</span>') + (n > 2 ? '<span class="sm" style="color:var(--err-ink)">Se usa en ' + n + ' actividades</span>' : '') + '</div>';
   }
+  var STEPS = [['Rol', 'Rol'], ['Nivel', 'Nivel ISA-95'], ['Frecuencia', 'Frecuencia'], ['Modo', 'Modo'], ['Tiempo', 'Tiempo'], ['Pasos', 'Pasos'], ['Entradas', 'Entradas'], ['Salidas', 'Salidas'], ['Problemas', null]];
+  function stepDone(a, i) { var c = completeness(a); if (i < 8) return c.miss.indexOf(STEPS[i][1]) < 0; var r = BP.revState('act', a.id); return r === 'lista' || r === 'revisada'; }
+  function firstOpen(a) { for (var i = 0; i < 9; i++) if (!stepDone(a, i)) return i; return 0; }
+  function stepBody(a, i) {
+    var s = S(), ed = BP.can('edit'), dis = ed ? '' : ' disabled', ins = [], outs = [], st = stepsL(a);
+    (a.io || []).forEach(function (x, k) { (x.dir === 'in' ? ins : outs).push([x, k]); });
+    var Q = function (q, hint) { return '<div class="wq"><h3>' + q + '</h3>' + (hint ? '<p>' + hint + '</p>' : '') + '</div>'; };
+    if (i === 0) { var dups = dupRoles().filter(function (p) { return p.indexOf(a.actor) >= 0; });
+      return Q('¿Quién hace esta actividad?', 'Elige el rol del catálogo del engagement. Si no existe, créalo una sola vez y quedará disponible para las demás.') + '<div class="wchips">' + s.cat.roles.map(function (r) { return chipBtn(a.actor === r, 'cRole', r, r, dis); }).join('') + (ed ? (C.newRole ? '<input class="inp" data-cnewrole="1" placeholder="Nombre del rol · Enter" style="max-width:260px">' : '<button class="ch add" data-a="cRoleNew">+ Nuevo rol</button>') : '') + '</div>' +
+        dups.map(function (p) { var o = p[0] === a.actor ? p[1] : p[0]; return '<div class="wsug">' + ic('i-star') + '<span><b>omnIA:</b> «' + esc(a.actor) + '» y «' + esc(o) + '» podrían ser el mismo rol.</span>' + (ed ? '<button class="b sm" data-a="cMerge" data-from="' + esc(o) + '" data-to="' + esc(a.actor) + '">Unificar</button><button class="b sm" data-a="cNoDup" data-v="' + esc(p[0] + '|' + p[1]) + '">Son distintos</button>' : '') + '</div>'; }).join(''); }
+    if (i === 1) return Q('¿En qué nivel ISA-95 ocurre?', 'El nivel define el carril donde aparece la actividad en el flujo.') + '<div class="wopts">' + [['L4', '4 · Planeación y logística', 'Programas, órdenes, inventarios, ERP'], ['L3', '3 · Operaciones de manufactura', 'Ejecución, calidad, registros de producción, MES'], ['L12', '1 y 2 · Control', 'PLC, SCADA, sensores y control del proceso']].map(function (x) { return '<button class="wopt' + (a.isa === x[0] ? ' on' : '') + '" data-a="cIsa" data-v="' + x[0] + '"' + dis + '><b>' + x[1] + '</b><small>' + x[2] + '</small></button>'; }).join('') + '</div>';
+    if (i === 2) return Q('¿Cada cuánto se hace?', 'Junto con el tiempo, permite calcular las horas que consume al mes.') + '<div class="wchips">' + FREQ.concat(a.freq && FREQ.indexOf(a.freq) < 0 ? [a.freq] : []).map(function (f) { return chipBtn(a.freq === f, 'cFreq', f, f, dis); }).join('') + (ed ? (C.freqOther ? '<input class="inp" data-cfreq="1" placeholder="Otra · Enter" style="max-width:200px">' : '<button class="ch add" data-a="cFreqOther">Otra…</button>') : '') + '</div>';
+    if (i === 3) return Q('¿Cómo se ejecuta hoy?', 'El modo define el color de la tarjeta en el flujo.') + '<div class="mgrid">' + MC.map(function (mm) { return '<button class="mcard' + (a.mode === mm[0] ? ' on' : '') + '" data-a="cMode" data-v="' + mm[0] + '" style="--mc:var(--m-' + mm[0] + ')"' + dis + '><i></i>' + mm[1] + '</button>'; }).join('') + '</div>' +
+      '<div class="wsub"><span class="lab">Herramienta tecnológica</span><div class="wchips">' + chipBtn(!a.tool, 'cTool', '', 'Sin herramienta', dis) + s.cat.systems.map(function (t) { return chipBtn(a.tool === t, 'cTool', t, t, dis); }).join('') + '</div></div>' +
+      '<div class="wsub"><span class="lab">¿Qué hace la persona? (marca las que apliquen)</span><div class="wchips">' + [['form', 'Llena un formulario'], ['conn', 'Usa una conexión o sistema'], ['print', 'Imprime'], ['scan', 'Escanea'], ['paperDoc', 'Usa papel']].map(function (x) { return '<button class="tog" data-a="cTog" data-v="' + x[0] + '" aria-pressed="' + !!a[x[0]] + '"' + dis + '>' + x[1] + '</button>'; }).join('') + '</div></div>';
+    if (i === 4) { var h = BP.hoursMonth(a); return Q('¿Cuánto tarda?', 'Sin tiempo no se puede calcular el beneficio de automatizarla. Un estimado razonable es mejor que nada.') + '<div class="wtime"><label class="f">Minutos por vez<input class="inp' + (a.dur == null || a.dur === '' ? ' bad' : '') + '" type="number" min="0" data-cf="dur" value="' + (a.dur == null ? '' : a.dur) + '" placeholder="Ej.: 15"' + dis + '></label><span class="wx">×</span><label class="f">Veces al mes<input class="inp" type="number" min="0" data-cf="perMonth" value="' + (a.perMonth == null ? '' : a.perMonth) + '" placeholder="Ej.: 60"' + dis + '></label><span class="wx">=</span><div class="wres"><b>' + (h != null ? h.toFixed(1) + ' h' : '—') + '</b><small>al mes</small></div></div>'; }
+    if (i === 5) return Q('¿Qué pasos sigue?', 'Un paso por línea, en el orden real. Arrastra ⋮⋮ para reordenar.') + '<div class="steps">' + st.map(function (x, k) { return '<div class="stp" data-si="' + k + '"><span class="hd" title="Arrastra para reordenar" aria-hidden="true">⋮⋮</span><b>' + (k + 1) + '.</b><textarea class="inp" rows="1" data-step="' + k + '"' + dis + '>' + esc(x) + '</textarea>' + (ed ? '<button class="x" data-a="stDel" data-i="' + k + '" aria-label="Quitar paso">' + ic('i-x') + '</button>' : '') + '</div>'; }).join('') + (ed ? '<button class="ch add" data-a="stAdd" style="align-self:flex-start">+ Agregar paso</button>' : '') + '</div>';
+    if (i === 6 || i === 7) { var dir = i === 6 ? 'in' : 'out', L = i === 6 ? ins : outs, no = i === 6 ? 'noIn' : 'noOut', paper = outs.some(function (o) { return /papel/i.test(o[0].medium); }), sys = outs.some(function (o) { return SYS_RX.test(o[0].medium); });
+      return Q(i === 6 ? '¿De dónde toma la información?' : '¿Dónde deja la información?', 'Cada tarjeta es un medio (papel, sistema, Excel…), el documento o formato y sus campos.') + '<div class="wio">' + (L.length ? L.map(function (p) { return ioCard(a, p[0], p[1], ed); }).join('') : (a[no] ? '<p class="sm mut">Marcada: ' + (i === 6 ? 'no recibe' : 'no produce') + ' información.</p>' : '')) + '</div>' +
+        (ed ? '<div class="row"><button class="ch add" data-a="ioAdd" data-v="' + dir + '">+ Agregar ' + (i === 6 ? 'entrada' : 'salida') + '</button>' + (L.length ? '' : '<button class="tog" data-a="cTog" data-v="' + no + '" aria-pressed="' + !!a[no] + '">' + (i === 6 ? 'No recibe información' : 'No produce información') + '</button>') + '</div>' : '') +
+        (i === 7 && paper && sys ? '<div class="wsug">' + ic('i-star') + '<span>El mismo dato se deja en papel y en un sistema: posible doble digitación.</span></div>' : '') + '<datalist id="dlDocs">' + s.cat.docs.map(function (d) { return '<option value="' + esc(d) + '">'; }).join('') + '</datalist>'; }
+    var c = completeness(a), rs = BP.revState('act', a.id);
+    return Q('¿Qué problemas tiene y qué necesita?', 'Registra los pain points que viste o te contaron. Después, en Priorizar, cada uno se convierte en una necesidad.') + '<div class="cgrid">' + BP.actPPs(a.id).map(function (p) { return '<div class="ppc"><div class="row"><select class="inp" data-cpp="cat" data-id="' + p.id + '" style="width:auto;flex:1"' + dis + '>' + opts(s.cfg.cats.filter(function (x) { return x[2] || x[0] === p.cat; }), p.cat) + '</select>' + (ed ? '<button class="x" data-a="delPP" data-id="' + p.id + '" aria-label="Quitar">' + ic('i-x') + '</button>' : '') + '</div><textarea class="inp" data-cpp="text" data-id="' + p.id + '"' + dis + '>' + esc(p.text) + '</textarea></div>'; }).join('') +
+      BP.actReqs(a.id).map(function (r) { return '<div class="rqc2">' + esc(r.text) + '<span class="sm" style="color:var(--info-ink)">Requerimiento ' + r.id + (r.acts.length > 1 ? ' · compartido con ' + r.acts.filter(function (x) { return x !== a.id; }).join(', ') : '') + '</span></div>'; }).join('') + '</div>' +
+      (ed ? '<button class="ch add" data-a="addPP" data-id="' + a.id + '" style="align-self:flex-start">+ Pain point</button>' : '') +
+      '<div class="wsend ' + (c.ok === c.n ? 'ok' : 'warn') + '"><div><b>' + (rs === 'lista' ? 'Enviada a revisión' : rs === 'revisada' ? 'Revisada por la líder' : c.ok === c.n ? 'Lista para enviar a revisión' : 'Faltan ' + (c.n - c.ok) + ' campos: ' + c.miss.join(' · ')) + '</b><small>' + (a.src || []).map(esc).join(' · ') + '</small></div>' + (ed && (rs === 'borrador' || rs === 'devuelta') ? '<button class="b vio" data-a="toReview" data-k="act" data-id="' + a.id + '">Enviar a revisión de Natalie</button>' : '') + '</div>' +
+      (ed ? '<button class="lnk2" data-a="delAct" data-id="' + a.id + '" style="color:var(--err-ink);align-self:flex-start">Eliminar actividad</button>' : '');
+  }
   function editor(a) {
     if (!a) return '<main class="ced"><div class="empty-s">Elige una actividad de la lista o crea una nueva.</div></main>';
-    var s = S(), ed = BP.can('edit'), c = completeness(a), sg = sugFor(a.id), ins = [], outs = [], st = stepsL(a), dis = ed ? '' : ' disabled';
-    (a.io || []).forEach(function (x, i) { (x.dir === 'in' ? ins : outs).push([x, i]); });
-    var sh = E.sheetOf(a.id), from = sh.edges.filter(function (e) { return e.t === a.id; }).map(function (e) { return BP.nl3(e.f) + (e.l ? ' → ' + e.l : ''); }), to = sh.edges.filter(function (e) { return e.f === a.id; }).map(function (e) { return BP.nl3(e.t); });
-    var paper = outs.some(function (o) { return /papel/i.test(o[0].medium); }), sys = outs.some(function (o) { return SYS_RX.test(o[0].medium); });
-    var dups = dupRoles().filter(function (p) { return p.indexOf(a.actor) >= 0; });
-    var col = c.ok === c.n ? 'var(--ok-ink)' : c.ok >= 7 ? '#e3a008' : 'var(--err)';
-    var miss = function (keys) { var m = keys.filter(function (k) { return c.miss.indexOf(k) >= 0; }); return m.length ? m.join(' · ') : true; };
-    return '<main class="ced"><div class="row" style="align-items:flex-start;gap:16px"><div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:6px"><span class="sm mut">' + a.id + ' · ' + BP.ISAN[a.isa] + ' · ' + BP.REV[BP.revState('act', a.id)][0] + '</span>' +
-      '<textarea class="ctitle" rows="1" data-cf="name"' + dis + ' aria-label="Nombre de la actividad">' + esc(a.name) + '</textarea>' +
-      '<span class="sm mut">' + (from.length ? 'Viene de <b style="color:var(--ink)">' + esc(from.join(', ')) + '</b>' : 'Sin actividad previa') + ' · ' + (to.length ? 'Sigue <b style="color:var(--ink)">' + esc(to.join(', ')) + '</b>' : 'sin siguiente') + ' · <button class="lnk2" data-a="cFlow">Ver en el flujo</button></span></div>' +
-      '<div class="ccomp"><div class="row"><b>Completitud</b><span class="sp"></span><b style="color:' + col + '">' + c.ok + ' de ' + c.n + '</b></div><span class="cbar big"><i style="width:' + Math.round(c.ok / c.n * 100) + '%;background:' + col + '"></i></span>' + (c.miss.length ? '<span class="sm" style="color:var(--err-ink)">Falta: ' + c.miss.join(' · ') + '</span>' : '<span class="sm" style="color:var(--ok-ink)">Completa según DT Enabler</span>') +
-      (ed && (BP.revState('act', a.id) === 'borrador' || BP.revState('act', a.id) === 'devuelta') ? '<button class="b sm vio" data-a="toReview" data-k="act" data-id="' + a.id + '">Enviar a revisión de Natalie</button>' : '') + '</div></div>' +
-      sg.map(function (r) { var t = BP.propText(r.p); return '<div class="csug">' + ic('i-star') + '<div style="flex:1"><b>omnIA sugiere</b> · ' + esc(t[0]) + ': ' + esc(t[2]) + '<br><span class="sm mut">Fuente: ' + esc(r.it.type + ' · ' + r.it.title) + '</span></div>' + (ed ? '<button class="b sm okb" data-a="tsOk" data-it="' + r.it.id + '" data-i="' + r.i + '">Aceptar</button><button class="b sm" data-a="tsNo" data-it="' + r.it.id + '" data-i="' + r.i + '">Descartar</button>' : '') + '</div>'; }).join('') +
-      sec(1, 'Qué y quién', miss(['Actividad', 'Rol', 'Nivel ISA-95', 'Frecuencia']),
-        '<div class="cgrid"><div class="cfld"><span class="lab">Rol · catálogo del engagement</span><div class="row" style="gap:6px">' + s.cat.roles.map(function (r) { return chipBtn(a.actor === r, 'cRole', r, r, dis); }).join('') + (ed ? (C.newRole ? '<input class="inp" data-cnewrole="1" placeholder="Nombre del rol · Enter" style="max-width:240px">' : '<button class="ch" data-a="cRoleNew">+ Nuevo rol</button>') : '') + '</div>' +
-          dups.map(function (p) { var o = p[0] === a.actor ? p[1] : p[0]; return '<span class="sm" style="color:var(--approval)">★ omnIA: «' + esc(a.actor) + '» y «' + esc(o) + '» podrían ser el mismo rol. ' + (ed ? '<button class="lnk2" data-a="cMerge" data-from="' + esc(o) + '" data-to="' + esc(a.actor) + '">Unificar en «' + esc(a.actor) + '»</button> · <button class="lnk2" data-a="cNoDup" data-v="' + esc(p[0] + '|' + p[1]) + '">Son distintos</button>' : '') + '</span>'; }).join('') + '</div>' +
-        '<div class="cfld"><span class="lab">Nivel ISA-95</span><div class="row" style="gap:6px">' + [['L4', '4 · Planeación'], ['L3', '3 · Operación'], ['L12', '1-2 · Control']].map(function (x) { return chipBtn(a.isa === x[0], 'cIsa', x[0], x[1], dis); }).join('') + '</div><span class="lab" style="margin-top:8px">Frecuencia</span><div class="row" style="gap:6px">' + FREQ.concat(a.freq && FREQ.indexOf(a.freq) < 0 ? [a.freq] : []).map(function (f) { return chipBtn(a.freq === f, 'cFreq', f, f, dis); }).join('') + (ed ? (C.freqOther ? '<input class="inp" data-cfreq="1" placeholder="Otra · Enter" style="max-width:160px">' : '<button class="ch" data-a="cFreqOther">Otra…</button>') : '') + '</div></div></div>') +
-      sec(2, 'Cómo se hace', miss(['Modo', 'Pasos', 'Tiempo']),
-        '<span class="lab">Modo de ejecución</span><div class="mgrid">' + MC.map(function (m) { return '<button class="mcard' + (a.mode === m[0] ? ' on' : '') + '" data-a="cMode" data-v="' + m[0] + '" style="--mc:var(--m-' + m[0] + ')"' + dis + '><i></i>' + m[1] + '</button>'; }).join('') + '</div>' +
-        '<div class="cgrid"><div class="cfld"><span class="lab">Herramienta · catálogo de sistemas</span><div class="row" style="gap:6px">' + chipBtn(!a.tool, 'cTool', '', 'Sin herramienta', dis) + s.cat.systems.map(function (t) { return chipBtn(a.tool === t, 'cTool', t, t, dis); }).join('') + '</div><span class="lab" style="margin-top:8px">Acciones</span><div class="row" style="gap:6px">' + [['form', 'Formulario'], ['conn', 'Conexión'], ['print', 'Imprime'], ['scan', 'Escanea'], ['paperDoc', 'Usa papel']].map(function (x) { return '<button class="tog" data-a="cTog" data-v="' + x[0] + '" aria-pressed="' + !!a[x[0]] + '"' + dis + '>' + x[1] + '</button>'; }).join('') + '</div></div>' +
-        '<div class="cfld"><span class="lab">Tiempo</span><div class="row" style="gap:8px"><input class="inp' + (a.dur == null || a.dur === '' ? ' bad' : '') + '" type="number" min="0" data-cf="dur" value="' + (a.dur == null ? '' : a.dur) + '" placeholder="min" style="width:90px"' + dis + '><span class="sm">min por vez ·</span><input class="inp" type="number" min="0" data-cf="perMonth" value="' + (a.perMonth == null ? '' : a.perMonth) + '" placeholder="—" style="width:80px"' + dis + '><span class="sm">veces/mes</span></div>' + (a.dur == null || a.dur === '' ? '<span class="sm" style="color:var(--err-ink)">Sin tiempo no se puede calcular el beneficio.</span>' : BP.hoursMonth(a) != null ? '<span class="sm" style="color:var(--ok-ink)">≈ ' + BP.hoursMonth(a).toFixed(1) + ' h al mes</span>' : '') + '</div></div>' +
-        '<span class="lab">Pasos · arrastra para reordenar</span><div class="steps">' + st.map(function (x, i) { return '<div class="stp" data-si="' + i + '"><span class="hd" title="Arrastra para reordenar" aria-hidden="true">⋮⋮</span><b>' + (i + 1) + '.</b><textarea class="inp" rows="1" data-step="' + i + '"' + dis + '>' + esc(x) + '</textarea>' + (ed ? '<button class="x" data-a="stDel" data-i="' + i + '" aria-label="Quitar paso">' + ic('i-x') + '</button>' : '') + '</div>'; }).join('') + (ed ? '<button class="lnk2" data-a="stAdd">+ Agregar paso</button>' : '') + '</div>') +
-      sec(3, 'Información que usa y produce', miss(['Entradas', 'Salidas']),
-        '<div class="cgrid"><div class="cfld"><span class="lab">Entradas · de dónde toma información</span>' + (ins.length ? ins.map(function (p) { return ioCard(a, p[0], p[1], ed); }).join('') : (a.noIn ? '<p class="sm mut">Marcada: no recibe información.</p>' : '<div class="ioempty">Sin entradas.</div>')) + (ed ? '<div class="row"><button class="lnk2" data-a="ioAdd" data-v="in">+ Agregar entrada</button>' + (ins.length ? '' : '<button class="tog" data-a="cTog" data-v="noIn" aria-pressed="' + !!a.noIn + '">No recibe información</button>') + '</div>' : '') + '</div>' +
-        '<div class="cfld"><span class="lab">Salidas · dónde deja información</span>' + (outs.length ? outs.map(function (p) { return ioCard(a, p[0], p[1], ed); }).join('') : (a.noOut ? '<p class="sm mut">Marcada: no produce información.</p>' : '<div class="ioempty">Sin salidas.</div>')) + (ed ? '<div class="row"><button class="lnk2" data-a="ioAdd" data-v="out">+ Agregar salida</button>' + (outs.length ? '' : '<button class="tog" data-a="cTog" data-v="noOut" aria-pressed="' + !!a.noOut + '">No produce información</button>') + '</div>' : '') + (paper && sys ? '<span class="sm" style="color:var(--approval)">★ El mismo dato se deja en papel y en un sistema: posible doble digitación.</span>' : '') + '</div></div>' +
-        '<datalist id="dlDocs">' + s.cat.docs.map(function (d) { return '<option value="' + esc(d) + '">'; }).join('') + '</datalist>') +
-      sec(4, 'Problemas y necesidades', BP.actPPs(a.id).length + ' pain point(s) · ' + BP.actReqs(a.id).length + ' requerimiento(s)',
-        '<div class="cgrid">' + BP.actPPs(a.id).map(function (p) { return '<div class="ppc"><div class="row"><select class="inp" data-cpp="cat" data-id="' + p.id + '" style="width:auto;flex:1"' + dis + '>' + opts(s.cfg.cats.filter(function (x) { return x[2] || x[0] === p.cat; }), p.cat) + '</select>' + (ed ? '<button class="x" data-a="delPP" data-id="' + p.id + '" aria-label="Quitar">' + ic('i-x') + '</button>' : '') + '</div><textarea class="inp" data-cpp="text" data-id="' + p.id + '"' + dis + '>' + esc(p.text) + '</textarea></div>'; }).join('') +
-        BP.actReqs(a.id).map(function (r) { var i = BP.reqIni(r.id); return '<div class="rqc2">' + esc(r.text) + '<span class="sm" style="color:var(--info-ink)">Requerimiento' + (r.acts.length > 1 ? ' · compartido con ' + r.acts.filter(function (x) { return x !== a.id; }).join(', ') : '') + (i ? ' · ' + esc(i.name) : '') + '</span></div>'; }).join('') + '</div>' +
-        (ed ? '<div class="row"><button class="lnk2" data-a="addPP" data-id="' + a.id + '">+ Pain point</button><button class="lnk2" data-a="cReq">+ Requerimiento</button></div>' : '')) +
-      sec(5, 'Evidencia', '', '<div class="row" style="gap:6px">' + (a.src || []).map(function (x) { return '<span class="src">' + esc(x) + '</span>'; }).join('') + '</div>') +
-      (ed ? '<div class="row"><span class="sp"></span><button class="lnk2" data-a="delAct" data-id="' + a.id + '" style="color:var(--err-ink)">Eliminar actividad</button></div>' : '') + '</main>';
+    if (C.stepFor !== a.id) { C.step = firstOpen(a); C.stepFor = a.id; }
+    var i = C.step, c = completeness(a), ed = BP.can('edit'), sg = sugFor(a.id), A = procActs(), ix = A.indexOf(a), nextA = A[ix + 1];
+    var sh = E.sheetOf(a.id), from = sh.edges.filter(function (e) { return e.t === a.id; }).map(function (e) { return BP.nl3(e.f); }), to = sh.edges.filter(function (e) { return e.f === a.id; }).map(function (e) { return BP.nl3(e.t); });
+    var stepper = '<ol class="wst">' + STEPS.map(function (x, k) { var dn = stepDone(a, k); return '<li class="' + (dn ? 'ok' : 'pe') + (k === i ? ' on' : '') + '"><button data-a="cStep" data-i="' + k + '" aria-label="Paso ' + (k + 1) + ': ' + x[0] + (dn ? ', completo' : ', pendiente') + '"' + (k === i ? ' aria-current="step"' : '') + '><span class="c">' + (k + 1) + '</span><span class="t">' + x[0] + '</span></button></li>'; }).join('') + '</ol>';
+    return '<main class="ced"><button class="b sm cback" data-a="cBack">← Actividades</button>' +
+      '<header class="whead"><span class="wk">' + a.id + ' · ' + BP.ISAN[a.isa] + ' · ' + BP.REV[BP.revState('act', a.id)][0] + '<span class="sp"></span>' + c.ok + ' de ' + c.n + '</span><textarea class="wname" rows="1" data-cf="name"' + (ed ? '' : ' disabled') + ' aria-label="Nombre de la actividad">' + esc(a.name) + '</textarea><span class="wflow">' + (from.length ? 'Viene de ' + esc(from.join(', ')) : 'Primera actividad') + ' · ' + (to.length ? 'sigue ' + esc(to.join(', ')) : 'sin siguiente') + ' · <button class="lnk3" data-a="cFlow">Ver en el flujo</button></span></header>' +
+      stepper +
+      (sg.length ? '<button class="wsugbar" data-a="cSugT" aria-expanded="' + !!C.sugOpen + '">' + ic('i-star') + '<span><b>omnIA tiene ' + sg.length + ' sugerencia' + (sg.length > 1 ? 's' : '') + '</b> para esta actividad</span><span class="sp"></span><span>' + (C.sugOpen ? 'Ocultar' : 'Revisar') + '</span></button>' : '') +
+      (C.sugOpen ? sg : []).map(function (r) { var t = BP.propText(r.p); return '<div class="csug">' + ic('i-star') + '<div style="flex:1"><b>omnIA sugiere</b> · ' + esc(t[0]) + ': ' + esc(t[2]) + '<br><span class="sm mut">Fuente: ' + esc(r.it.type + ' · ' + r.it.title) + '</span></div>' + (ed ? '<button class="b sm okb" data-a="tsOk" data-it="' + r.it.id + '" data-i="' + r.i + '">Aceptar</button><button class="b sm" data-a="tsNo" data-it="' + r.it.id + '" data-i="' + r.i + '">Descartar</button>' : '') + '</div>'; }).join('') +
+      '<section class="wbody">' + stepBody(a, i) + '</section>' +
+      '<div class="wfoot"><button class="b" data-a="cStep" data-i="' + (i - 1) + '"' + (i ? '' : ' disabled') + '>← Anterior</button><span class="sm mut">Paso ' + (i + 1) + ' de 9 · ' + STEPS[i][0] + '</span>' + (i < 8 ? '<button class="b pri" data-a="cStep" data-i="' + (i + 1) + '">Siguiente: ' + STEPS[i + 1][0] + ' →</button>' : (nextA ? '<button class="b pri" data-a="cNextAct" data-id="' + nextA.id + '">Siguiente actividad: ' + nextA.id + ' →</button>' : '<span></span>')) + '</div></main>';
   }
   function constructorView() {
     var A = procActs(); if (!C.sel || !S().acts[C.sel] || C.sel.charAt(0) !== V.proc) C.sel = A.length ? A[0].id : null;
-    return '<div class="pv">' + header('constructor') + '<div class="pv-body cbody">' + list() + editor(S().acts[C.sel]) + '</div>' + modals() + '</div>';
+    return '<div class="pv">' + header('constructor') + '<div class="pv-body cbody' + (C.det ? ' det' : '') + '">' + list() + editor(S().acts[C.sel]) + '</div>' + modals() + '</div>';
   }
 
   /* ---------- vistas por rol, documentos y sistemas ---------- */
@@ -3518,7 +3605,7 @@ var BP = (function () {
   BP.M.procesos.after = function (c) {
     if (['constructor', 'rol', 'docs', 'sis'].indexOf(V.mode) < 0) return prevAfter(c);
     var cs = document.querySelector('.crow.on'); if (cs) cs.scrollIntoView({ block: 'nearest' });
-    document.querySelectorAll('.stp textarea, .ctitle').forEach(function (t) { t.style.height = 'auto'; t.style.height = t.scrollHeight + 'px'; });
+    document.querySelectorAll('.stp textarea, .ctitle, .wname').forEach(function (t) { t.style.height = 'auto'; t.style.height = t.scrollHeight + 'px'; });
     var f = document.querySelector('[data-cnewrole],[data-cfreq],.iocard.ed input'); if (f) f.focus();
     var q = document.querySelector('#qTx'); if (q) q.focus();
     bindSteps();
@@ -3538,8 +3625,12 @@ var BP = (function () {
   function A5(a, b, ev) {
     var s = S(), A = s.acts[C.sel];
     switch (a) {
-      case 'cSel': C.sel = b.dataset.id; C.io = null; C.newRole = false; C.freqOther = false; BP.render(); return true;
-      case 'cGo': C.sel = b.dataset.id; V.mode = 'constructor'; BP.render(); return true;
+      case 'cSel': C.sel = b.dataset.id; C.io = null; C.newRole = false; C.freqOther = false; C.det = true; BP.render(); var ce = document.querySelector('.ced'); if (ce) ce.scrollTop = 0; if (window.innerWidth <= 900) { var cb = document.querySelector('.cback'); if (cb) cb.scrollIntoView(); } return true;
+      case 'cStep': C.step = Math.max(0, Math.min(8, +b.dataset.i)); C.io = null; BP.render(); var ce2 = document.querySelector('.ced'); if (ce2) ce2.scrollTop = 0; return true;
+      case 'cNextAct': C.sel = b.dataset.id; C.io = null; BP.render(); var ce3 = document.querySelector('.ced'); if (ce3) ce3.scrollTop = 0; return true;
+      case 'cBack': C.det = false; BP.render(); return true;
+      case 'cSugT': C.sugOpen = !C.sugOpen; BP.render(); return true;
+      case 'cGo': C.sel = b.dataset.id; C.det = true; V.mode = 'constructor'; BP.render(); return true;
       case 'cF': C.f = b.dataset.v; BP.render(); return true;
       case 'cFlow': V.mode = 'lienzo'; V.view = 'hoy'; V.sheet = E.sheetOf(C.sel).id; V.sel = [C.sel]; V.ficha = null; BP.render(); return true;
       case 'cRole': if (BP.deny('edit')) return true; edit(A); A.actor = b.dataset.v; BP.render(); return true;
@@ -3589,7 +3680,7 @@ var BP = (function () {
     var el = e.target; if (el.dataset.crole != null) { C.role = el.value; BP.render(); return; }
     if (el.dataset.cf || el.dataset.step != null || el.dataset.cpp) fieldChange(el);
   });
-  main.addEventListener('input', function (e) { var el = e.target; if (el.dataset && el.dataset.cq) { C.q = el.value; var p = el.selectionStart; BP.render(); var q2 = document.querySelector('[data-cq]'); if (q2) { q2.focus(); q2.setSelectionRange(p, p); } } if (el.matches && el.matches('.stp textarea, .ctitle')) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; } });
+  main.addEventListener('input', function (e) { var el = e.target; if (el.dataset && el.dataset.cq) { C.q = el.value; var p = el.selectionStart; BP.render(); var q2 = document.querySelector('[data-cq]'); if (q2) { q2.focus(); q2.setSelectionRange(p, p); } } if (el.matches && el.matches('.stp textarea, .ctitle, .wname')) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; } });
   main.addEventListener('keydown', function (e) {
     if (BP.mod !== 'procesos' || ['constructor', 'rol', 'docs', 'sis'].indexOf(V.mode) < 0) return;
     var el = e.target, s = S();
