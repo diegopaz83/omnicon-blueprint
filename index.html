@@ -1445,6 +1445,18 @@ button.cgrp2 em{font-style:normal;font-size:10.5px;font-weight:500;letter-spacin
 .cgrp2 .chv .ic{width:14px;height:14px}
 .cgrp2[aria-expanded="false"] .chv{transform:rotate(0deg)}
 .cgrp2[aria-expanded="true"] .chv{transform:rotate(90deg)}
+.capbtn{position:relative}
+.capn{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#fff;color:#b0353c;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px #b0353c}
+.capinbox{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;padding:12px 14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink)}
+.capinbox:hover{border-color:var(--bright)}
+.capinbox b{display:block;font-size:13.5px;font-weight:600}.capinbox small{display:block;font-size:12px;color:var(--muted)}
+.capinbox>span:last-child{color:var(--bright);font-weight:600;white-space:nowrap}
+@media (max-width:640px){
+  .capbtn{position:fixed!important;z-index:60;left:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));margin:0;height:52px;padding:0 20px 0 16px!important;border-radius:999px;box-shadow:0 8px 22px rgba(176,53,60,.35),0 2px 6px rgba(0,0,0,.15);font-size:14px}
+  .capbtn span.cl{display:inline!important}
+  .capbtn i{width:11px;height:11px}
+}
+@media (max-width:640px){.capbtn span.capn:not([hidden]){display:inline-flex!important}}
 </style>
 </head>
 <body>
@@ -4015,7 +4027,7 @@ var BP = (function () {
   };
   function retBar() { return '<div class="jret"><button class="b sm" data-jret="1">← Volver a ' + esc(J.ret.t) + '</button><span class="sm">Ajusta lo que necesites y vuelve: el documento se actualiza solo.</span></div>'; }
   function goSub(k, ret) { var sb = subByKey(k); if (!sb) return; J.sub = k; if (ret) J.ret = ret; BP.go(sb.mod, sb.ctx ? JSON.parse(JSON.stringify(sb.ctx)) : undefined); }
-  BP.afterRender = function (mod) { if (mod === 'entregable') J.ret = null; };
+  BP.afterRender = function (mod) { if (mod === 'entregable') J.ret = null; paintCapN(); };
 
   /* ---------- Priorizar · cubrir pain points ---------- */
   function uncovered() { var s = S(); s.ppJust = s.ppJust || {}; return s.pps.filter(function (p) { return !BP.actReqs(p.act).length && !s.ppJust[p.id] && s.acts[p.act]; }); }
@@ -4066,7 +4078,7 @@ var BP = (function () {
   function zoomM() { if (!Z) return ''; var s = S(), SH = s.sheets || [], sh = Z === 'e2e' ? s.e2e : Z === 'isa' ? SH.filter(function (x) { return x.kind === 'isa'; })[0] : SH.filter(function (x) { return x.kind === 'free'; })[0]; return '<div class="mbg" data-a="epZNo" data-self="1"><div class="mdl dzm" role="dialog" aria-modal="true" aria-label="Diagrama ampliado"><div class="mh"><h2>' + ({ e2e: 'Cadena E2E', isa: 'Flujo ISA-95', l0: 'Mapa físico (nivel 0)' }[Z]) + '</h2><button class="x" data-a="epZNo" aria-label="Cerrar">' + ic('i-x') + '</button></div><div class="mb dzb">' + BP.DLV.diagram(sh, 'Diagrama') + '</div></div></div>'; }
 
   /* ---------- captura transversal ---------- */
-  var capBtn = document.createElement('button'); capBtn.className = 'capbtn'; capBtn.id = 'capBtn'; capBtn.innerHTML = '<i></i><span>Capturar</span>'; capBtn.setAttribute('aria-label', 'Capturar nota de voz, foto, documento o nota rápida'); capBtn.hidden = true;
+  var capBtn = document.createElement('button'); capBtn.className = 'capbtn'; capBtn.id = 'capBtn'; capBtn.innerHTML = '<i></i><span class="cl">Capturar</span><span class="capn" hidden></span>'; capBtn.setAttribute('aria-label', 'Capturar nota de voz, foto, documento o nota rápida'); capBtn.hidden = true;
   var tr = document.querySelector('.top-right'); if (tr) tr.insertBefore(capBtn, tr.firstChild);
   var layer = document.createElement('div'); layer.id = 'capLayer'; document.body.appendChild(layer);
   function procActs() { var L = BP.E.V.proc || 'A'; return Object.keys(S().acts).filter(function (k) { return k.charAt(0) === L; }).sort(); }
@@ -4081,7 +4093,7 @@ var BP = (function () {
       '<button class="cap-op" data-cap="voz"' + (auth ? '' : ' disabled') + '><span style="background:#b0353c">' + ic('i-mic') + '</span><b>Nota de voz</b><small>' + (auth ? 'Graba la entrevista o lo que observas' : 'La planta no autorizó grabaciones') + '</small></button>' +
       '<button class="cap-op" data-cap="foto"><span style="background:#0a58eb">' + ic('i-image') + '</span><b>Foto</b><small>Formato, tablero o equipo</small></button>' +
       '<button class="cap-op" data-cap="doc"><span style="background:#001c3f">' + ic('i-doc') + '</span><b>Documento</b><small>PDF, Excel o imagen</small></button>' +
-      '<button class="cap-op" data-cap="nota"><span style="background:#7543ff">' + ic('i-edit') + '</span><b>Nota rápida</b><small>Escribe una observación</small></button></div><p class="sm mut">Lo capturado llega a la bandeja; omnIA propone cambios y tú decides.</p>';
+      '<button class="cap-op" data-cap="nota"><span style="background:#7543ff">' + ic('i-edit') + '</span><b>Nota rápida</b><small>Escribe una observación</small></button></div><button class="capinbox" data-cap="inbox"><span><b>Bandeja de captura de ' + esc(s.eng.client) + '</b><small>' + pendingN() + ' propuesta(s) de omnIA por revisar · cada engagement tiene su propia bandeja</small></span><span>Abrir →</span></button>';
     if (c.step === 'nota') body = sel + '<label class="f">Observación<textarea class="inp" id="capTx" rows="5" placeholder="Ej.: En A12 el enjuague se cronometra a mano; a veces se olvida y toca repetir."></textarea></label><div class="row"><button class="b" data-cap="menu">← Atrás</button><span class="sp"></span><button class="b pri" data-cap="notaOk">Enviar a la bandeja</button></div>';
     if (c.step === 'foto') body = sel + (c.img ? '<img src="' + c.img + '" alt="Foto capturada" class="cap-img"><label class="row sm" style="gap:8px"><input type="checkbox" id="capOnly" checked> Guardar solo los campos que lea omnIA, no la foto</label><label class="f">¿Qué es? (opcional)<input class="inp" id="capTt" placeholder="Ej.: Formato FMS0027 en blanco"></label><div class="row"><button class="b" data-cap="foto">Repetir</button><span class="sp"></span><button class="b pri" data-cap="fotoOk">Enviar a la bandeja</button></div>' : '<label class="cap-drop">' + ic('i-image') + '<b>Tomar o elegir una foto</b><small>En el celular abre la cámara</small><input type="file" accept="image/*" capture="environment" id="capFile" hidden></label><button class="b" data-cap="menu">← Atrás</button>');
     if (c.step === 'doc') body = sel + (c.file ? '<div class="cap-file">' + ic('i-doc') + '<span><b>' + esc(c.file.name) + '</b><small>' + Math.round(c.file.size / 1024) + ' KB</small></span></div>' + (/\.xlsx?$/i.test(c.file.name) ? '<div class="ro-note">¿Es una plantilla DT Enabler? <button class="lnk2" data-cap="imp">Impórtala con validación en Actividades</button></div>' : '') + '<div class="row"><button class="b" data-cap="doc">Otro archivo</button><span class="sp"></span><button class="b pri" data-cap="docOk">Enviar a la bandeja</button></div>' : '<label class="cap-drop">' + ic('i-doc') + '<b>Elegir un documento</b><small>PDF, Excel, Word o imagen · hasta 20 MB</small><input type="file" accept=".pdf,.xlsx,.xls,.docx,.doc,image/*" id="capFile" hidden></label><button class="b" data-cap="menu">← Atrás</button>');
@@ -4090,6 +4102,8 @@ var BP = (function () {
     var a = $('capAct'); if (a) a.addEventListener('change', function () { c.act = a.value; });
     var t = layer.querySelector('textarea, .cap-op:not([disabled])'); if (t) t.focus();
   }
+  function pendingN() { var n = 0; S().inbox.forEach(function (i) { i.props.forEach(function (p) { if (!p.st) n++; }); }); return n; }
+  function paintCapN() { var c = capBtn.querySelector('.capn'); if (!c || !BP.S) return; var n = pendingN(); c.hidden = !n; c.textContent = n; capBtn.setAttribute('aria-label', 'Capturar nota de voz, foto, documento o nota rápida' + (n ? ' · ' + n + ' propuestas pendientes en la bandeja' : '')); }
   function addItem(it) { var s = S(); s.inbox.unshift(it); closeCap(); BP.render(); BP.toast(it.props.length ? 'omnIA encontró ' + it.props.length + ' propuesta(s) · revisa la bandeja' : 'Enviado a la bandeja de captura'); }
   layer.addEventListener('click', function (e) {
     var b = e.target.closest('[data-cap]'); if (!b) return; var k = b.dataset.cap, c = J.cap, s = S();
@@ -4102,6 +4116,7 @@ var BP = (function () {
     if (k === 'fotoOk') { var only = $('capOnly').checked, tt = ($('capTt').value || '').trim(); addItem({ id: 'C' + Date.now(), type: 'Foto de formato', title: tt || 'Foto · ' + title, who: BP.me.name, meta: only ? 'Solo campos extraídos' : 'Foto guardada', text: [['Foto capturada' + (c.act ? ' en ' + title : '') + '. ' + (only ? 'Se conservarán solo los campos que lea omnIA; la imagen no se guarda.' : 'La imagen queda adjunta como evidencia.') + ' En producción omnIA leerá los campos del formato.']], props: [], img: only ? null : c.img }); return; }
     if (k === 'docOk') { addItem({ id: 'C' + Date.now(), type: 'Documento', title: c.file.name, who: BP.me.name, meta: Math.round(c.file.size / 1024) + ' KB', text: [['Documento adjunto' + (c.act ? ' a ' + title : '') + '. En producción omnIA lo leerá y propondrá cambios.']], props: [] }); return; }
     if (k === 'imp') { closeCap(); BP.openImport(); return; }
+    if (k === 'inbox') { closeCap(); goSub('bandeja'); return; }
   });
 
   /* ---------- grabación con pantalla bloqueada ---------- */
